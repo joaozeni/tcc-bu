@@ -1,0 +1,249 @@
+\providecommand{\abntreprintinfo}[1]{%
+ \citeonline{#1}}
+\setlength{\labelsep}{0pt}\begin{thebibliography}{}
+\providecommand{\abntrefinfo}[3]{}
+\providecommand{\abntbstabout}[1]{}
+\abntbstabout{1.45.2.1 }
+
+\bibitem[Biere et al. 2009]{Biere}
+\abntrefinfo{Biere et al.}{BIERE et al.}{2009}
+{BIERE, A. et al. \textbf{Handbook of Satisfiability: Volume 185 Frontiers in
+  Artificial Intelligence and Applications}. Amsterdam, The Netherlands, The
+  Netherlands: IOS Press, 2009.
+ISBN 1586039296, 9781586039295.}
+
+\bibitem[Bittencourt, Marchi e Padilha 2003]{bittencourt2003syntactic}
+\abntrefinfo{Bittencourt, Marchi e Padilha}{BITTENCOURT; MARCHI; PADILHA}{2003}
+{BITTENCOURT, G.; MARCHI, J.; PADILHA, R.~S. A syntactic approach to
+  satisfaction. In:  \textbf{4th Inter. Workshop on the Implementation of Logic
+  (LPAR03)}. [S.l.: s.n.], 2003. p. 18--32.}
+
+\bibitem[Busemann et al. 2012]{Busemann2012}
+\abntrefinfo{Busemann et al.}{BUSEMANN et al.}{2012}
+{BUSEMANN, C. et al. Enabling the usage of sensor networks with
+  service-oriented architectures. In:  \textbf{Proceedings of the 7th
+  International Workshop on Middleware Tools, Services and Run-Time Support for
+  Sensor Networks}. New York, NY, USA: ACM, 2012.  (MidSens '12), p. 1:1--1:6.
+ISBN 978-1-4503-1610-1. Dispon{\'\i}vel em:
+  $<$http://doi.acm.org/10.1145/2405167.2405168$>$.}
+
+\bibitem[Clarke et al. 2001]{Clarke2001}
+\abntrefinfo{Clarke et al.}{CLARKE et al.}{2001}
+{CLARKE, E. et al. Bounded model checking using satisfiability solving.
+\textbf{Form. Methods Syst. Des.}, Kluwer Academic Publishers, Hingham, MA,
+  USA, v.~19, n.~1, p. 7--34, jul. 2001.
+ISSN 0925-9856.
+Dispon{\'\i}vel em: $<$http://dx.doi.org/10.1023/A:1011276507260$>$.}
+
+\bibitem[Coulouris et al. 2011]{Coulouris2011}
+\abntrefinfo{Coulouris et al.}{COULOURIS et al.}{2011}
+{COULOURIS, G. et al. \textbf{Distributed Systems: Concepts and Design}. 5th.
+  ed. USA: Addison-Wesley Publishing Company, 2011.
+ISBN 0132143011, 9780132143011.}
+
+\bibitem[Davis, Logemann e Loveland 1962]{Davis1962}
+\abntrefinfo{Davis, Logemann e Loveland}{DAVIS; LOGEMANN; LOVELAND}{1962}
+{DAVIS, M.; LOGEMANN, G.; LOVELAND, D. A machine program for theorem-proving.
+\textbf{Commun. ACM}, ACM, New York, NY, USA, v.~5, n.~7, p. 394--397, jul.
+  1962.
+ISSN 0001-0782.
+Dispon{\'\i}vel em: $<$http://doi.acm.org/10.1145/368273.368557$>$.}
+
+\bibitem[Een e S{\"{o}}rensson 2005]{MiniSatSystemDesc}
+\abntrefinfo{Een e S{\"{o}}rensson}{EEN; S{\"{O}}RENSSON}{2005}
+{EEN, N.; S{\"{O}}RENSSON, N. \textbf{{MiniSat v1.13 - A SAT Solver with
+  Conflict-Clause Minimization, System description for the SAT competition}}.
+  2005.}
+
+\bibitem[Een e Sörensson 2003]{Een03anextensible}
+\abntrefinfo{Een e Sörensson}{EEN; SöRENSSON}{2003}
+{EEN, N.; SöRENSSON, N. \textbf{An Extensible SAT-solver [ver 1.2]}. 2003.}
+
+\bibitem[Flynn 1972]{Flynn1972}
+\abntrefinfo{Flynn}{FLYNN}{1972}
+{FLYNN, M.~J. Some computer organizations and their effectiveness.
+\textbf{IEEE Trans. Comput.}, IEEE Computer Society, Washington, DC, USA,
+  v.~21, n.~9, p. 948--960, set. 1972.
+ISSN 0018-9340.
+Dispon{\'\i}vel em: $<$http://dx.doi.org/10.1109/TC.1972.5009071$>$.}
+
+\bibitem[Gil, Flores e Silveira]{Gil_pmsat}
+\abntrefinfo{Gil, Flores e Silveira}{GIL; FLORES; SILVEIRA}{}
+{GIL, L.; FLORES, P.; SILVEIRA, L.~M. Pmsat: a parallel version of minisat.
+\textbf{Journal on Satisfiability, Boolean Modeling and Computation}, p.~2008.}
+
+\bibitem[Hamadi e Sais 2009]{Hamadi09manysat}
+\abntrefinfo{Hamadi e Sais}{HAMADI; SAIS}{2009}
+{HAMADI, Y.; SAIS, L. Manysat: a parallel sat solver.
+\textbf{JOURNAL ON SATISFIABILITY, BOOLEAN MODELING AND COMPUTATION (JSAT)},
+  v.~6, 2009.}
+
+\bibitem[Hillis e Steele Jr. 1986]{Hillis1986}
+\abntrefinfo{Hillis e Steele Jr.}{HILLIS; STEELE JR.}{1986}
+{HILLIS, W.~D.; STEELE JR., G.~L. Data parallel algorithms.
+\textbf{Commun. ACM}, ACM, New York, NY, USA, v.~29, n.~12, p. 1170--1183, dez.
+  1986.
+ISSN 0001-0782.
+Dispon{\'\i}vel em: $<$http://doi.acm.org/10.1145/7902.7903$>$.}
+
+\bibitem[H{\"o}lldobler et al. 2011]{holldobler2011short}
+\abntrefinfo{H{\"o}lldobler et al.}{H{\"O}LLDOBLER et al.}{2011}
+{H{\"O}LLDOBLER, S. et al. A short overview on modern parallel sat-solvers.
+\textbf{Proceedings of the International Conference on Advanced Computer
+  Science and Information Systems}, p. 201--206, 2011.}
+
+\bibitem[Hoos e Sttzle 2004]{Hoos2004}
+\abntrefinfo{Hoos e Sttzle}{HOOS; STTZLE}{2004}
+{HOOS, H.; STTZLE, T. \textbf{Stochastic Local Search: Foundations \&
+  Applications}. San Francisco, CA, USA: Morgan Kaufmann Publishers Inc., 2004.
+ISBN 1558608729.}
+
+\bibitem[Jurkowiak, Li e Utard 2005]{Jurkowiak2005}
+\abntrefinfo{Jurkowiak, Li e Utard}{JURKOWIAK; LI; UTARD}{2005}
+{JURKOWIAK, B.; LI, C.~M.; UTARD, G. A parallelization scheme based on work
+  stealing for a class of sat solvers.
+\textbf{J. Autom. Reason.}, Springer-Verlag New York, Inc., Secaucus, NJ, USA,
+  v.~34, n.~1, p. 73--101, jan. 2005.
+ISSN 0168-7433.
+Dispon{\'\i}vel em: $<$http://dx.doi.org/10.1007/s10817-005-1970-7$>$.}
+
+\bibitem[Katajainen e Madsen 2002]{Katajainen}
+\abntrefinfo{Katajainen e Madsen}{KATAJAINEN; MADSEN}{2002}
+{KATAJAINEN, J.; MADSEN, J.~N. Performance tuning an algorithm for compressing
+  relational tables. In:  \textbf{Proceedings of the 8th Scandinavian Workshop
+  on Algorithm Theory}. London, UK, UK: Springer-Verlag, 2002.  (SWAT '02), p.
+  398--407.
+ISBN 3-540-43866-1. Dispon{\'\i}vel em:
+  $<$http://dl.acm.org/citation.cfm?id=645901.672631$>$.}
+
+\bibitem[Kautz e Selman 1992]{Kautz1992}
+\abntrefinfo{Kautz e Selman}{KAUTZ; SELMAN}{1992}
+{KAUTZ, H.; SELMAN, B. Planning as satisfiability. In:  \textbf{Proceedings of
+  the 10th European Conference on Artificial Intelligence}. New York, NY, USA:
+  John Wiley \& Sons, Inc., 1992.  (ECAI '92), p. 359--363.
+ISBN 0-471-93608-1. Dispon{\'\i}vel em:
+  $<$http://dl.acm.org/citation.cfm?id=145448.146725$>$.}
+
+\bibitem[Kautz e Selman 1996]{Kautz1996}
+\abntrefinfo{Kautz e Selman}{KAUTZ; SELMAN}{1996}
+{KAUTZ, H.; SELMAN, B. Pushing the envelope: Planning, propositional logic, and
+  stochastic search. In:  \textbf{Proceedings of the Thirteenth National
+  Conference on Artificial Intelligence - Volume 2}. AAAI Press, 1996.
+  (AAAI'96), p. 1194--1201.
+ISBN 0-262-51091-X. Dispon{\'\i}vel em:
+  $<$http://dl.acm.org/citation.cfm?id=1864519.1864564$>$.}
+
+\bibitem[Kumar 2002]{Kumar2002}
+\abntrefinfo{Kumar}{KUMAR}{2002}
+{KUMAR, V. \textbf{Introduction to Parallel Computing}. 2nd. ed. Boston, MA,
+  USA: Addison-Wesley Longman Publishing Co., Inc., 2002.
+ISBN 0201648652.}
+
+\bibitem[Lavagno, Martin e Scheffer 2006]{Lavagno2006}
+\abntrefinfo{Lavagno, Martin e Scheffer}{LAVAGNO; MARTIN; SCHEFFER}{2006}
+{LAVAGNO, L.; MARTIN, G.; SCHEFFER, L. \textbf{Electronic Design Automation for
+  Integrated Circuits Handbook - 2 Volume Set}. Boca Raton, FL, USA: CRC Press,
+  Inc., 2006.
+ISBN 0849330963.}
+
+\bibitem[Marques 2013]{RicardoSousaMarques2013}
+\abntrefinfo{Marques}{MARQUES}{2013}
+{MARQUES, R.~S.
+\textbf{Parallel {SAT} Solver}.
+Disserta��o (Master's Thesis) --- Instituto Superior T{\'e}cnico, Universidade
+  T{\'e}cnica de Lisboa, dez. 2013.}
+
+\bibitem[Miltersen, Radhakrishnan e Wegener 2005]{Miltersen}
+\abntrefinfo{Miltersen, Radhakrishnan e Wegener}{MILTERSEN; RADHAKRISHNAN;
+  WEGENER}{2005a}
+{MILTERSEN, P.~B.; RADHAKRISHNAN, J.; WEGENER, I. On converting cnf to dnf.
+\textbf{Theor. Comput. Sci.}, Elsevier Science Publishers Ltd., Essex, UK,
+  v.~347, n.~1-2, p. 325--335, nov. 2005.
+ISSN 0304-3975.
+Dispon{\'\i}vel em: $<$http://dx.doi.org/10.1016/j.tcs.2005.07.029$>$.}
+
+\bibitem[Miltersen, Radhakrishnan e Wegener 2005]{Miltersen2005}
+\abntrefinfo{Miltersen, Radhakrishnan e Wegener}{MILTERSEN; RADHAKRISHNAN;
+  WEGENER}{2005b}
+{MILTERSEN, P.~B.; RADHAKRISHNAN, J.; WEGENER, I. On converting cnf to dnf.
+\textbf{Theor. Comput. Sci.}, Elsevier Science Publishers Ltd., Essex, UK,
+  v.~347, n.~1-2, p. 325--335, nov. 2005.
+ISSN 0304-3975.
+Dispon{\'\i}vel em: $<$http://dx.doi.org/10.1016/j.tcs.2005.07.029$>$.}
+
+\bibitem[Nelson 2013]{nelson2013new}
+\abntrefinfo{Nelson}{NELSON}{2013}
+{NELSON, M.
+\textbf{A new approach to parallel SAT solvers}.
+Tese (Doutorado) --- Massachusetts Institute of Technology, 2013.}
+
+\bibitem[Ouyang 1996]{Ouyang1996}
+\abntrefinfo{Ouyang}{OUYANG}{1996}
+{OUYANG, M. \textbf{How Good Are Branching Rules in DPLL?}
+[S.l.], 1996.}
+
+\bibitem[Patterson e Hennessy 2012]{patterson2012computer}
+\abntrefinfo{Patterson e Hennessy}{PATTERSON; HENNESSY}{2012}
+{PATTERSON, D.; HENNESSY, J. \textbf{Computer Organization and Design: The
+  Hardware/software Interface}. Morgan Kaufmann, 2012.  (Morgan Kaufmann Series
+  in Computer Graphics).
+ISBN 9780123747501. Dispon{\'\i}vel em:
+  $<$http://books.google.com.br/books?id=DMxe9AI4-9gC$>$.}
+
+\bibitem[Quinn 2003]{Quinn2003}
+\abntrefinfo{Quinn}{QUINN}{2003}
+{QUINN, M.~J. \textbf{Parallel Programming in C with MPI and OpenMP}. [S.l.]:
+  McGraw-Hill Education Group, 2003.
+ISBN 0071232656.}
+
+\bibitem[Rau e Fisher]{Rau2003}
+\abntrefinfo{Rau e Fisher}{RAU; FISHER}{}
+{RAU, B.~R.; FISHER, J.~A. Instruction-level parallelism. In:
+  \textbf{Encyclopedia of Computer Science}. Chichester, UK: John Wiley and
+  Sons Ltd. p. 883--887.
+ISBN 0-470-86412-5.
+Dispon{\'\i}vel em: $<$http://dl.acm.org/citation.cfm?id=1074100.1074489$>$.}
+
+\bibitem[Russell e Norvig 2003]{Russell2003}
+\abntrefinfo{Russell e Norvig}{RUSSELL; NORVIG}{2003}
+{RUSSELL, S.~J.; NORVIG, P. \textbf{Artificial Intelligence: A Modern
+  Approach}. 2. ed. [S.l.]: Pearson Education, 2003.
+ISBN 0137903952.}
+
+\bibitem[Selman, Kautz e Cohen 1995]{Selman95}
+\abntrefinfo{Selman, Kautz e Cohen}{SELMAN; KAUTZ; COHEN}{1995}
+{SELMAN, B.; KAUTZ, H.; COHEN, B. Local search strategies for satisfiability
+  testing. In:  \textbf{DIMACS SERIES IN DISCRETE MATHEMATICS AND THEORETICAL
+  COMPUTER SCIENCE}. [S.l.: s.n.], 1995. p. 521--532.}
+
+\bibitem[Silva e Sakallah 1996]{Silva1997}
+\abntrefinfo{Silva e Sakallah}{SILVA; SAKALLAH}{1996}
+{SILVA, J.~a. P.~M.; SAKALLAH, K.~A. Grasp\&mdash;a new search algorithm for
+  satisfiability. In:  \textbf{Proceedings of the 1996 IEEE/ACM International
+  Conference on Computer-aided Design}. Washington, DC, USA: IEEE Computer
+  Society, 1996.  (ICCAD '96), p. 220--227.
+ISBN 0-8186-7597-7. Dispon{\'\i}vel em:
+  $<$http://dl.acm.org/citation.cfm?id=244522.244560$>$.}
+
+\bibitem[Singer e Monnet 2008]{Singer2008}
+\abntrefinfo{Singer e Monnet}{SINGER; MONNET}{2008}
+{SINGER, D.; MONNET, A. Jack-sat: A new parallel scheme to solve the
+  satisfiability problem (sat) based on join-and-check.
+In:  \underline{\ \ \ \ \ \ \ \ }. \textbf{Parallel Processing and Applied
+  Mathematics: 7th International Conference, PPAM 2007, Gdansk, Poland,
+  September 9-12, 2007 Revised Selected Papers}. Berlin, Heidelberg: Springer
+  Berlin Heidelberg, 2008. p. 249--258.
+ISBN 978-3-540-68111-3.}
+
+\bibitem[Skiena 2008]{Skiena2008}
+\abntrefinfo{Skiena}{SKIENA}{2008}
+{SKIENA, S.~S. \textbf{The Algorithm Design Manual}. 2nd. ed. [S.l.]: Springer
+  Publishing Company, Incorporated, 2008.
+ISBN 1848000693, 9781848000698.}
+
+\bibitem[Sorensson e Een 2002]{Sorensson02minisat}
+\abntrefinfo{Sorensson e Een}{SORENSSON; EEN}{2002}
+{SORENSSON, N.; EEN, N. \textbf{MiniSat v1.13}.
+[S.l.], 2002.}
+
+\end{thebibliography}

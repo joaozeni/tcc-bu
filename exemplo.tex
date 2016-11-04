@@ -1,0 +1,1217 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Universidade Federal de Santa Catarina             
+% Biblioteca Universitária                     
+%----------------------------------------------------------------------
+% Exemplo de utilização da documentclass ufscThesis
+%----------------------------------------------------------------------                                                           
+% (c)2013 Roberto Simoni (roberto.emc@gmail.com)
+%         Carlos R Rocha (cticarlo@gmail.com)
+%         Rafael M Casali (rafaelmcasali@yahoo.com.br)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{ufscThesis} % Definicao do documentclass ufscThesis	
+
+%----------------------------------------------------------------------
+% Pacotes usados especificamente neste documento
+\usepackage{graphicx} % Possibilita o uso de figuras e gráficos
+\usepackage{color}    % Possibilita o uso de cores no documento
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+%----------------------------------------------------------------------
+% Comandos criados pelo usuário
+\newcommand{\afazer}[1]{{\color{red}{#1}}} % Para destacar uma parte a ser trabalhada
+\renewcommand{\ABNTbibliographyname}{REFERÊNCIAS} % Necessário para abnTeX 0.8.2
+
+%----------------------------------------------------------------------
+% Identificadores do trabalho
+% Usados para preencher os elementos pré-textuais
+\instituicao[a]{Universidade Federal de Santa Catarina} % Opcional
+\departamento[a]{Biblioteca Universitária}
+\curso[o]{Programa de ...}
+\documento[o]{Dissertação} % [o] para dissertação [a] para tese
+\titulo{ParaQuantumSAT: Um algoritmo \textit{SAT solver} distribuído}
+\autor{João Guilherme Zeni}
+\grau{Bacharel em Ciências da Computação}
+\local{Florianópolis} % Opcional (Florianópolis é o padrão)
+\data{04}{junho}{2013}
+\orientador[Orientador\\Universidade Federal de Santa Catarina]{Prof. Dra. Jerusa Marchi}
+\coorientador[Coorientador\\Universidade Federal de Santa Catarina]{Prof. Dr. Mario Dantas}
+
+\numerodemembrosnabanca{2} % Isso decide se haverá uma folha adicional
+\orientadornabanca{nao} % Se faz parte da banca definir como sim
+\coorientadornabanca{sim} % Se faz parte da banca definir como sim
+\bancaMembroA{Primeiro membro\\Universidade Djines} %Nome do presidente da banca
+\bancaMembroB{Segundo membro\\Universidade Marcio}      % Nome do membro da Banca
+\bancaMembroC{Terceiro membro\\Universidade ...}     % Nome do membro da Banca
+\bancaMembroD{Quarto membro\\Universidade ...}       % Nome do membro da Banca
+%\bancaMembroE{Quinto membro\\Universidade ...}       % Nome do membro da Banca
+%\bancaMembroF{Sexto membro\\Universidade ...}        % Nome do membro da Banca
+%\bancaMembroG{Sétimo membro\\Universidade ...}       % Nome do membro da Banca
+
+\dedicatoria{Este trabalho é dedicado aos meus colegas de classe e aos meus queridos pais.}
+
+\agradecimento{Inserir os agradecimentos aos colaboradores à execução do trabalho.}
+
+\epigrafe{Texto da Epígrafe. Citação relativa ao tema do trabalho. É opcional. A epígrafe pode também aparecer na abertura de cada seção ou capítulo.}
+{(Autor da epígrafe, ano)}
+
+\textoResumo {Computação paralela é uma área de estudo crítica, visto que hoje a capacidade de processamento dos computadores cresce com a paralelização dos processadores. Um dos principais desafios em computação paralela é a construção de algoritmos paralelos eficientes para resolver problemas clássicos de computação. Este trabalho se propõe a desenvolver um algoritmo \textit{SAT solver} paralelo, tendo como base um algoritmo SAT solver sequencial.}
+\palavrasChave {Palavras Chave 1.Algoritmos Paralelos 2.\textit{SAT Solver}}
+ 
+\textAbstract {Resumo traduzido para outros idiomas, neste caso, inglês. Segue o formato do resumo feito na língua vernácula. As palavras-chave traduzidas, versão em língua estrangeira, são colocadas abaixo do texto precedidas pela expressão ``Keywords'', separadas por ponto.}
+\keywords {Keyword 1. Keyword 2. Keyword 3.}
+
+%----------------------------------------------------------------------
+% Início do documento                                
+\begin{document}
+%--------------------------------------------------------
+% Elementos pré-textuais
+%\capa  
+\folhaderosto[comficha] % Se nao quiser imprimir a ficha, é só não usar o parâmetro
+%\folhaaprovacao
+\paginadedicatoria
+\paginaagradecimento
+\paginaepigrafe
+\paginaresumo
+\paginaabstract
+%\pretextuais % Substitui todos os elementos pre-textuais acima
+\listadefiguras % as listas dependem da necessidade do usuário
+\listadetabelas 
+\listadeabreviaturas
+\listadesimbolos
+\sumario
+%--------------------------------------------------------
+% Elementos textuais
+
+\chapter{Introdução}
+A computação paralela surgiu como um campo de estudo utilizado 
+apena em computação científica, dada a grande demanda por poder 
+computacional desta área\cite{Coulouris2011}. Hoje porém computação paralela está sendo 
+utilizada em novos cenários, o que tem motivado o crescente estudo de 
+algoritmos paralelos. Um desses cenários é o de \textit{internet of things(IoT)}, 
+pois em IoT funciona com diversos dispositivos inteligente que se 
+comunicam\cite{Busemann2012}. Outro cenário é o de processadores multi-core que se 
+tornaram populares desde que foi atingida a barreira de potência 
+em processadores \textit{single-core}, que fez com que não seja mais possível 
+aumentar a potência de um processador individualmente \cite{patterson2012computer}.
+
+O problema da satisfazibilidade booleana(SAT)\cite{Biere} consiste em determinar, 
+para uma dada fórmula booleana, se existe uma atribuição de valores 
+para as variáveis para a qual a fórmula é satisfeita. SAT é um problema 
+NP-Completo, logo sua resolução por si só é um dos maiores problemas da 
+computação. Porém o SAT tem aplicações diretas em outras áreas da 
+computação como verificação formal e inteligência artificial, 
+tornando-o um problema interessante para o uso e estudo de 
+computação paralela.
+
+Computação paralela\cite{Kumar2002} começou a despertar o interesse dos pesquisadores 
+de algoritmos \textit{SAT solvers} quando foi alcançada a barreira de potência em 
+processadores \textit{single-core}, pois estes a consideravam uma boa técnica para 
+resolver o problema de forma rápida. Além disso com a massiva utilização de processadores 
+\textit{multi-core} é necessário que os \textit{SAT solvers} funcionem bem nestes ambientes.
+
+A principal abordagem ao problema tem sido aplicar técnicas de paralelismo, como 
+dividir-e-conquistar, em algoritmos de \textit{SAT solving} consolidados, como DPLL\cite{Selman95}. Porém 
+essa abordagem apresenta alguns problemas, como a necessidade de adicionar mecanismos de 
+controle de carga aos algoritmos. Apesar de apresentar problemas esta abortagem é bastante 
+utilizada em computação paralela por apresentar diversas vantagens, como aproveitar as 
+otimizações já realizadas nos algoritmos sequencias, este algoritmos já serem bastante 
+confiaveis e a popularidade já estabelecida nestes algoritmos.
+
+Neste trabalho, também utilizamos um algoritmo \textit{SAT solver} sequencial como base para 
+o desenvolvimento do algoritmo paralelo, porém utilizamos um novo algoritmo \textit{SAT solver} sequencial 
+que apresenta algumas vantagens para sua paralelização, este algoritmo nunca foi paralelizado anteriormente, 
+além disso também escolhemos uma linguagem de programação pouco popular em \textit{SAT solvers}, que 
+apresenta algumas vantagens para sua implementação. As vangens e desvantagens são apresentadas neste 
+trabalho.
+
+
+\section{Objetivos}
+\label{sec:objets}
+
+O presente trabalho tem por objetivo geral o desenvolvimento de um 
+algoritmo \textit{SAT solver} paralelo, tendo como base um algoritmo sequencial.
+
+\subsection{Objetivos Específicos}
+
+Os objetivos específicos deste trabalho estão listados abaixo:
+
+\begin{enumerate}
+  \item Compreender as técnicas de computação paralela e quais são mais adequadas para se utilizar no algoritmo \textit{SAT solver}.
+  \item Compreender a abordagem utilizada no algoritmo \textit{SAT solver} QuantumSAT.
+  \item Desenvolver a versão paralela do algoritmo \textit{SAT solver}.
+  \item Testar o algoritmo desenvolvido, usando teorias SAT aleatórias.
+  \item Comparar os resultados do algoritmo desenvolvido com outros já existentes.
+  \item Submeter o algoritmo a uma competição, visando sua avaliação definitiva.
+  \item Redação do TCC e dos artigos técnicos.
+\end{enumerate}
+
+\section{Justificativa}
+\label{sec:just}
+
+O SAT é um problema que apresenta diversas aplicações na indústria
+atual, além disso ele também possui grande importância teórica 
+na ciência da computação.
+
+A computação paralela sempre possuiu grande importância quando 
+se trata de aplicações científicas ou de grande volumes de 
+dados/processamento, porém a partir do momento que atingiu-se 
+a barreira de potência em processadores \textit{single-core} a área tem ganhado importância em todas as 
+áreas da computação, dado que processadores multi-core hoje são 
+os mais usados.
+
+Logo a pesquisa de algoritmos \textit{SAT solvers} paralelos se justifica na 
+intersecção entre as justificativas para a pesquisa nessas duas áreas,
+dado que hoje todas as áreas que utilizando \textit{SAT solver} tem como ferramenta 
+de trabalho processadores multi-core e necessitam de algoritmos que 
+funcionem de forma eficiente nesses processadores.
+
+\section{Apresentação do Trabalho}
+
+Este trabalho é divido em outros quatro capítulos, conforme segue.
+
+No capítulo dois é a fundamentação teórica do trabalha, neste capítulo são apresentados os 
+conceitos necessários para a compreensão do trabalho desenvolvido, este capítulo apresenta 
+inicialmente o problema SAT, seguindo apresenta a área de computação paralela e por fim 
+a interseção entre o problema SAT e computação paralela.
+
+No capítulo três apresenta o desenvolvimento do trabalho, neste capítulo é apresentado o 
+algoritmo paralelo desenvolvido, um exemplo de funcionamento do sistema desenvolvido e como 
+as decisões de projeto foram tomadas.
+
+\chapter{Fundamentação Teórica}
+\label{chap:fund}
+
+Neste capítulo são descritos os fundamentos necessários para a
+compreensão do trabalho desenvolvido.
+
+\section{O Problema SAT}
+\label{sec:sat}
+
+\subsection{Lógica Proposicional}
+
+É o campo da lógica que lida com o estudo  de proposições. Esta área é de vital importância 
+para a lógica e para a ciência da computação, tendo sido estudada por um longo período por 
+diversos lógicos, porém estudo moderno da área começa com o livro \textit{Logic of Relatives(1883)} 
+de Charles Peirce, nos anos 1890 Gottlob Frege começa a estudar e desenvolver o conceito de sentenças,
+sendo o termo função proporcional cunhado por Bertrand Russell em \textit{Principles of Mathematics(1903)}. 
+Estes estudos tem sido amplamente aplicados em diversas áreas de ciência da computação como 
+gramaticas formais, teoria da computação, algoritmos entre outros.
+
+Uma proposição, que consiste de conjunto de variáveis ou símbolos proposicionais, que possuem valores
+verdade, sendo os valores verdade ou falso, e pode ser formada de outras proposições com o uso de 
+conectores lógicos. Conectores lógicos compões proposições através da ligação de símbolos proposicionais, 
+para este trabalho notam-se os conectores \textit{AND} representado por $\wedge$, \textit{OR} 
+representado por $\vee$ e \textit{NOT} representado por $\neg$. A semântica destes operadores 
+é descritos na tabela \ref{tab:a}.Outra estrutura são literais, que são variáveis que podem assumir 
+valores verdade. Fórmulas proposicionais são escritas utilizando conectores lógicos, símbolos proposicionais 
+e literais e são utilizado para se trabalhar com sentenças lógicas. Neste trabalho fórmulas proposicionais 
+serão representados pelo símbolo $\phi$.
+
+\begin{table}[!htb]
+\begin{center}
+\begin{tabular}{@{}|l|l|l|l|l|@{}}
+%\toprule
+\multicolumn{2}{|l|}{\textbf{Entradas}} & \multicolumn{3}{l|}{\textbf{Saídas}} \\ 
+A                  & B                  & A $\wedge$ B         & A $\vee$  B         & $\neg$A        \\ 
+V                  & V                  & V           & V           & F        \\ 
+V                  & F                  & F           & V           & F        \\ 
+F                  & V                  & F           & V           & V        \\ 
+F                  & F                  & F           & F           & V        \\ 
+\end{tabular}
+\caption{Tabela lógica}\label{tab:a}
+\end{center}
+\end{table}
+
+Fórmulas proposicionais podem ser representadas de diversas formas, porém 
+toda fórmula proposicional pode ser representa nas duas formas 
+canônicas, a forma normal conjuntiva (CNF, sigla em inglês) e a 
+forma normal disjuntiva (DNF, sigla em inglês).
+
+As fórmulas proposicionais em CNF são representadas como uma 
+conjunção de cláusulas, sendo cada cláusula uma disjunção de literais, 
+onde cada literal pode assumir Verdade ou Falso, 
+como é apresentado abaixo na equação \ref{eq:CNF}. Toda fórmula proposicional pode ser 
+convertida para forma CNF através de um procedimento trivial. 
+
+\begin{equation} \label{eq:CNF}
+F = C_1\wedge C_2\wedge C_3 \dots \wedge C_k\ |\ \forall C, C_n = L_1\vee L_2 \vee L_3 \dots \vee L_k
+\end{equation}
+
+As fórmulas proposicionais em DNF são representadas como uma 
+disjunção de cláusulas, sendo cada cláusula um conjunção de literais, 
+como é apresentado abaixo na equação \ref{eq:DNF}. A conversão de uma fórmula proposicional 
+para forma DNF é por si só uma solução para o problema, portanto 
+uma tarefa NP-Completa. Para realizar esta conversão existem 
+diversas técnicas, neste trabalho será apresentada em detalhes 
+uma delas.
+
+\begin{equation} \label{eq:DNF}
+F = D_1\vee D_2\vee D_3 \dots \vee D_k\ |\ \forall D, D_n = L_1\wedge L_2 \wedge L_3 \dots \wedge L_k
+\end{equation}
+
+Estes conceitos são importantes pois o problema SAT é amplamente relaciona com uma sub-classe de 
+fórmulas proposicionais. 
+
+\subsection{Funcionamento do Problema SAT}
+
+Proposição é uma sentença a qual pode ser atribuído um sentido, 
+chamado de asserção. Uma proposições podem ser simples ou compostas. Neste 
+trabalho utilizaremos proposições lógicas, cujas asserções são 
+Verdadeiro ou Falso. Proposições lógicas simples correspondem a 
+variáveis. Proposições complexas são 
+proposições simples conectadas por operadores lógicos. Quando 
+existem variáveis sem valor atribuído uma proposição chama-se 
+de fórmula proposicional, representada neste trabalho por $\Phi$.
+
+Fórmulas proposicionais são escritas utilizando operadores lógicos,
+que são símbolo utilizado para se trabalhar com sentenças lógicas. 
+Estes operadores possuem caráter binário, sendo usados para conectar 
+duas sentenças lógicas, e caráter unário, para atribuir uma propriedade 
+a uma sentença lógica. Para este trabalho notam-se os operadores 
+\textit{AND} representado por $\wedge$, \textit{OR} representado 
+por $\vee$ e \textit{NOT} representado por $\neg$. As interpretações 
+destes operadores são descritos na tabela \ref{tab:a}.
+
+O problema SAT é definido sobre uma linguagem de lógica proposicional $\mathcal{L}(P)$, 
+onde P = {$p_1,p_2,\dots,p_n$} sendo que todo p é um símbolo proposicional sem 
+valor verdade definido. Uma fórmula $\Phi \in$ $\mathcal{L}(P)$ pode ser escrita em CNF, 
+logo $\Phi = \{C_1\wedge C_2 \dots \wedge C_k | \forall C, C_n = p_i \vee \neg p_j \dots \vee p_z\}$.
+Com isto pode-se definir o problema SAT como sendo responder se existe um 
+conjunto de atribuição de valores verdade a P, o qual faz com que $\Phi$ 
+seja verdade, caso exista esse conjunto $\Phi$ é dito satisfazível. O exemplo 
+abaixo apresenta um problema SAT.
+
+Seja $\Phi$:
+
+$$0: (\neg p_4\vee p_2 \vee\neg p_3) \wedge $$
+$$1: (\neg p_3\vee p_2 \vee\neg p_1) \wedge $$
+$$2: ( p_5\vee\neg p_2 \vee\neg p_3) \wedge $$
+$$3: (\neg p_2\vee p_5 \vee\neg p_1) \wedge $$
+$$4: (\neg p_3\vee p_5 \vee p_1) \wedge $$
+$$5: ( p_4\vee p_5 \vee p_2) \wedge $$
+$$6: (\neg p_5\vee p_3 \vee\neg p_2) \wedge $$
+$$7: (\neg p_1\vee p_4 \vee p_3) \wedge $$
+$$8: (\neg p_3\vee\neg p_2 \vee\neg p_1) \wedge $$
+$$9: (\neg p_3\vee\neg p_4 \vee\neg p_1) $$
+
+Assim podemos ver que se $\neg p_2$ for Verdade então as cláusulas
+2, 3, 6 e 8 serão Verdade, se $\neg p_3$ for Verdade então as cláusulas 
+0, 1, 4 e 9 serão Verdade e se $p_4$ for Verdade então as cláusulas 
+5 e 7 serão Verdade, como foi possível atribuir valores que fizeram com 
+que todas as cláusulas de $\Phi$ sejam Verdade disse que $\Phi$ é satisfazível.
+
+Outra característica do problema SAT é número de símbolos em cada cláusula,
+o problema usualmente é chamado de $k$SAT onde $k$ é número de símbolos em cada 
+cláusula, no caso anterior o problema é um 3SAT. Esta característica 
+é importante pois toda fórmula proposicional pode ser escrito como um 3SAT. 
+Outro fato importante é o de que os problemas que podem ser escritos em 
+2SAT possuem complexidade O(n), porém não é garantido que todas as fórmulas proposicionais 
+possam ser escritas na forma 2SAT\cite{Biere}.
+
+O padrão de entrada da grande maioria dos \textit{SAT solvers} é o Dimacs, 
+que representa fórmulas proposicionais na forma CNF.
+
+\subsection{Importância do Problema SAT}
+\label{sec:ipsat}
+
+A resolução de problemas SAT possui aplicação direta em diversas áreas, 
+nesta seção serão apresentadas algumas delas e como SAT é utilizado nestas 
+aplicações.
+
+O projeto de sistemas digitais é amplamente auxiliado pelas mais diversas 
+ferramentas, muitas delas se utilizam de \textit{SAT solvers}\cite{Lavagno2006}. Uma delas é verificação 
+de equivalência, que consiste em verificar se para dois circuitos digitais 
+distintos com o mesmo conjunto de entradas o conjunto de saídas será igual, 
+para se resolver este problema as funções de entradas e saídas dos circuitos 
+são escritos como uma fórmula proposicional e verifica-se a satisfazibilidade 
+com um \textit{SAT solver}.
+
+Uma aplicação bem sucedida da solução de SAT é o \textit{automate planning} em 
+inteligência artificial\cite{Kautz1992}. O problema \textit{planning} consistem em, 
+dado um conjunto de estados e um conjunto de transições entre estados, 
+descobrir se é possível sair de um estado inicial e atingir um estado 
+objetivo em um número finito de transições. Uma solução para este problema 
+se chama satplan\cite{Kautz1992}, que consiste em converter o problema do \textit{planning}
+para uma fórmula proposicional e verificar se a mesma é satisfazível, isto é 
+feito de forma iterativa começando do planejamento com 1 passo e indo até 
+o limite de passos dado pelo problema.
+
+Outra aplicação da solução SAT importante são os \textit{model checkers}\cite{Biere},
+que consistem em dado um modelo automaticamente verificar se este modelo 
+atende a dadas especificações. \textit{Model checkers} possuem ampla aplicação, 
+principalmente em teste de sistemas, que vão de hardware a protocolos de comunicação.
+Este problema apresenta uma solução similar a do \textit{planning}, pois sua solução 
+consiste em converter o modelo em uma fórmula proposicional e a partir dai utilizar um 
+\textit{SAT solver}\cite{Clarke2001}. Esta técnica é a mais utilizada nos casos de verificadores 
+restritos e quando as especificações são dadas através de fórmulas em lógica 
+temporal.
+
+\subsection{Algoritmos SAT Solvers}
+\label{sec:solver}
+
+Os \textit{SAT solvers} podem ser divididos em classes, sendo que as 
+duas principais classes de algoritmos \textit{SAT solvers} sequenciais 
+são os baseados em conflito de cláusulas(CDCL, sigla em inglês), a 
+versão mais moderna do DPLL(Davis-Putnam-Logemann-Loveland)\cite{Davis1962}, e os 
+baseados em busca local estocástica\cite{Selman95}. O algoritmo \textit{SAT solver} 
+desenvolvido neste trabalho é baseado na conversão CNF-DNF. 
+Não exitem muitos outros \textit{solver} baseados nesse método, 
+em \cite{Miltersen} \cite{Katajainen} este método é discutido.
+
+A classe CDCL, e sua versão original o DPLL, são baseados na técnica 
+de \textit{backtracking}\cite{Davis1962}. Estes algoritmos consistem em  atribuir um 
+valor verdade a uma literal, simplificar a fórmula e, recursivamente, 
+verificar se a fórmula simplificada é satisfazível. No caso do DPLL a ideia 
+básica é recursivamente montar uma arvore de decisão, como a apresentada na 
+figura \ref{fig:DPLL}, além disto são utilizadas diversas heurísticas para melhor eficiência do algoritmo, 
+destacam-se aqui as heurísticas para a escolha do literal a se atribuir o 
+valor verdade\cite{Ouyang1996}. No caso do CDCL, é montada uma estrutura adicional 
+que o permite ignorar alguns passos, para em teorias geradas aleatório 
+baixar o tempo médio de execução\cite{Silva1997}. O funcionamento básico do 
+CDCL é mostrado na figura \ref{fig:CDCL}.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figuras/DPLL.jpg}
+    \caption{Arvore de decisão do DPLL}
+    \label{fig:DPLL}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figuras/CDCL.jpg}
+    \caption{Diagrama que apresenta os procedimentos e componentes do CDCL}
+    \label{fig:CDCL}
+\end{figure}
+
+O algoritmo \ref{alg:DPLL} é o pseudo código de uma versão básica do 
+DPLL. Esta versão é bastante simples. O primeiro passo é 
+eliminar as cláusulas unitárias, aquelas que contém apenas um literal, 
+e as cláusulas que contém o literal da cláusula unitária, pois para a fórmula 
+ser satisfazível este literal precisa ser Verdade. O segundo passo é 
+eliminar as cláusulas que contém literais puros, aqueles que apresentam apenas 
+uma polaridade em toda a fórmula, pois sempre é possível se atribuir Verdade a 
+estes símbolos. O terceiro é selecionar aleatoriamente um literal. O quarto 
+é executar este algoritmo recursivamente, considerando Verdade para este literal 
+e para sua negação.
+
+\begin{algorithm}
+\caption{Pseudo código DPLL} \label{alg:DPLL}
+\begin{algorithmic}[1]
+\Procedure{DPLL}{$\Phi$}
+\For{Cláusula unitária $l\ em\ \Phi$}
+    \State $\Phi \gets atribui(l,\Phi)$
+\EndFor
+\For{Literal puro l em $\Phi$}
+    \State $\Phi \gets atribui(l,\Phi)$
+\EndFor
+\State $l \gets escolhaDeLiteral(\Phi)$
+\State \textbf{return} $DPLL(\Phi \wedge l) \vee DPLL(\Phi \wedge \neg l)$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+Uma implementação do algoritmo CDCL é o \textit{solver} MiniSAT\allowbreak\cite{Een03anextensible}.
+Este \textit{solver} implementa várias otimizações que resultam 
+em melhorias significativas em casos médios. Vale destacar 
+a técnica de minimização de cláusulas conflitantes, pois 
+em exemplos indústrias é bastante comum que, mais de 30\% 
+dos literais em uma cláusula conflitante, sejam redundantes\cite{MiniSatSystemDesc}.
+
+Já os algoritmos baseados em busca local estocástica consistem em atribuir 
+valores verdade a literais de forma iterativa e ir, constantemente, 
+melhorando a solução taé que a fórmula seja satisfazível\cite{Selman95}. Estes são 
+algoritmos gulosos, pois utilizam os literais que eliminam o maior 
+número de cláusulas. Possuem diversas formas de otimização, 
+por exemplo: aumentar a quantidade de literais a atribuir valor verdade 
+em cada passo, implementar métodos para melhor a qualidade da seleção de literais 
+de forma iterativa, entre outras. A principal falha deste método 
+é sua incompletude, dado que ele é incapaz de afirmar se uma dada 
+fórmula proposicional é insatisfazível\cite{Hoos2004}.
+
+O algoritmo \ref{alg:local} é um pseudo código de uma versão básica de um 
+algoritmo de busca local estocástica para SAT. O primeiro passo é executar 
+um laço para o número de tentativas definido. O segundo é atribuir a todos 
+os símbolos um valor verdade aleatório. O terceiro é executar um laço 
+para um número de mudanças de símbolos definido. Dentro deste laço 
+é verificado se $\Phi$ está satisfeito, caso esteja é retornado $\Phi$. 
+Caso não esteja é feita uma mudança aleatória no valor verdade de um símbolo.
+Caso não seja encontrada uma solução o algoritmo informa que não foi 
+possível encontrar uma solução.
+
+\begin{algorithm}
+\caption{Pseudocódigo de um algoritmo de busca local} \label{alg:local}
+\begin{algorithmic}[1]
+\Procedure{buscaLocal}{$\Phi$}
+\For{i := 1 to nTentativas}
+    \State{$\Phi \gets$ valoresVerdadeAleatórios($\Phi$)} \Comment{atribui valores verdade
+    aleatórios aos literais}
+    \For{i := 1 to nMudanças}
+        \If{$\Phi$ é satisfeito}
+            \State \textbf{return} $\Phi$
+        \EndIf
+        \State $\Phi \gets mudancaDeLiteral(\Phi)$ \Comment{muda o valor verdade do literal que
+        reduzir o maior número de cláusulas}
+    \EndFor
+\EndFor
+\State \textbf{return} Não foi encontrada atribuição satisfazível
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+Uma implementação desta técnica é o \textit{solver} WalkSAT\cite{Selman95}, 
+este \textit{solver} utiliza uma otimização que consiste no modo de escolha 
+do literal a alterar o valor verdade, na maioria dos algoritmos 
+a escolha é feita de modo a atingir o maior número de cláusulas. No 
+WalkSAT está escolha é feita tendo como base quais são as cláusulas que 
+estão insatisfeitas. Este \textit{solver} possui um bom resultado 
+para fórmulas proposicionais que foram geradas a partir de um problema 
+de \textit{planning}, sendo esta sua principal aplicação\cite{Kautz1996}.
+
+Existem outras diversas classes de \textit{SAT solvers} que possuem 
+usos específicos. Neste trabalho é utilizado como base um algoritmo 
+SAT de uma classe diferente, que é baseada na conversão CNF-DNF. 
+Uma vez que a solução de SAT para fórmulas proposicionais em DNF é 
+trivial, a conversão é, por si só, uma resolução. Esta técnica é bastante 
+antiga sendo sua forma clássica a utilização da lei de De-Morgan para efetuar 
+a conversão\cite{Skiena2008}, porém esta solução é extremamente ineficiente\cite{Miltersen2005}. 
+Na próxima seção é apresentado o algoritmo base para este trabalho, que 
+efetua esta conversão escrevendo a fórmula proposicional na forma DNF 
+utilizado uma nova estrutura chamada quantum, que assegura maior eficácia 
+ao processo de conversão.
+
+\subsection{Algoritmo Base}
+\label{sec:algbase}
+
+% Utilizar trabalhos da jerusa e outros
+
+Será utilizado como base o algoritmo \textit{SAT solver} QuantumSAT\allowbreak\cite{bittencourt2003syntactic}. 
+Este é um algoritmo \textit{SAT solver} completo, cuja técnica para 
+a solução baseia-se em converter uma fórmula proposicional 
+escrita em CNF para DNF. 
+
+A ideia para se calcular a teoria em DNF consiste em encontrar os 
+símbolos a se atribuir Verdade para que cada cláusula possua pelo 
+menos um símbolo com valor atribuído Verdade. Os símbolos encontrados 
+formam uma cláusula DNF e são chamados de cláusulas duais mínimas.
+
+Cada cláusula dual mínima representa um conjunto de atribuições que 
+satisfaz $\Phi$. Cada símbolo da cláusula dual mínima representa 
+pelo menos uma cláusula de $\Phi$. 
+
+%A seguir são apresentadas as principais características do algoritmo, 
+%bem como uma descrição do mesmo.
+
+Para se calcular as cláusulas duais mínimas de $\Phi$ o QuantumSAT utiliza 
+uma estrutura chamada quantum.O quantum, consiste de um 
+par ($\phi$,F), onde $\phi$ é um símbolo da fórmula proposicional e 
+F é um conjunto das coordenadas das cláusulas que contém $\phi$. A 
+notação utilizada para o quantum é $\phi^F$. O algoritmo utiliza 
+tanto o quantum do literal quanto o da negação do mesmo. Ao coletivo 
+de quantum, chama-se quanta.
+
+O quantum associado a negação de um literal chama-se \textit{mirror} 
+do quantum, sendo representado como o complemento do quantum, portanto
+o quantum do literal $\neg \phi$ é o \textit{mirror} do quantum do 
+literal $\phi$, denotado por $\overline{\phi^F}$
+
+Seja $\Phi$ o mesmo do exemplo anterior, então a lista de quanta de $\Phi$ é:
+
+$$P_1^{\{4\}}, \neg P_1^{\{1,2,7\}}, P_2^{\{0,1,5\}}, \neg P_2^{\{2,3,6,8\}},
+P_3^{\{6,7\}}, \neg P_3^{\{0,1,2,4,8,9\}}, $$
+$$P_4^{\{5,7\}}, \neg P_4^{\{0,9\}}, 
+P_5^{\{2,3,4,5\}}, \neg P_5^{\{6\}}$$
+
+Para tanto o primeiro passo do algoritmo é construir o conjunto
+de todos os quanta, o segundo é definir a ordem de quanta iniciais 
+da busca de sucessores, o terceiro é realizar a expansão dos sucessores dos quanta. Nos 
+próximos parágrafos são explicados os passos, além de algumas 
+otimizações propostas para o algoritmo.
+
+Para se construir o conjunto de quanta é feita uma busca, percorrendo 
+todas as cláusulas e verificando quais literais as 
+compõem. Como pode ser visto no algoritmo \ref{alg:mquanta}.
+
+\begin{algorithm}[H]
+\caption{Algoritmo de montagem dos quanta} \label{alg:mquanta}
+\begin{algorithmic}[1]
+\Procedure{quantumMaker}{$\Phi$}\Comment{Recebe uma fórmula no formato CNF}
+\For{$each\ \phi\ in\ \Phi$}
+	\State$F(\phi) \gets$ \O \Comment{Inicializa a lista de quanta}
+\EndFor
+\For{$each\ C\ in\ \Phi$}
+    \For{$each\ \phi\ in\ C$}
+        \State $F(\phi) \gets C$
+    \EndFor
+\EndFor
+\State \textbf{return} $F$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+Com a lista quanta de $\Phi$ montada encontrar a representação CNF de 
+$\Phi$ é uma busca em um espaço de estados, em que cada estado 
+corresponde a um caminho para uma possível cláusula dual mínima.
+
+Para realizar esta busca é utilizado um algoritmo do tipo A*\cite{Russell2003}, este 
+precisa de três funções básicas, uma para definir os estados iniciais, 
+uma para definir o estado vizinho de um estado e uma para saber qual estado 
+é final.
+
+Para se definir a ordem dos quanta iniciais da busca de sucessores, 
+chamados de estados iniciais, é utilizada uma heurística que tem  como 
+critério a frequência de $\phi$ nas cláusulas de $\Phi$, sendo ordenados 
+dos mais frequentes aos menos frequentes. Realizar essa ordenação é fácil 
+pois consiste simplesmente em se ordenar a lista dos quanta pelo tamanho 
+de F.
+
+Para realizar a busca de vizinhos são utilizadas algumas estruturas 
+adicionais.Uma delas é o \textit{gap}, sendo este representado por $G_\phi$, que 
+é a lista de cláusulas que não possuem nenhum literal associado a um 
+conjunto incompleto $\phi$, logo $G_\phi = \Phi - \bigcup_{i=1}^{k}F_i$.
+Esta estrutura é utilizada pois todos os quanta associados a $G_\phi$ são 
+possíveis sucessores.
+
+Outra estrutura é a lista de quanta proibidos, representado por $X_\phi$, 
+que é a lista de \textit{mirrors} dos quanta associados a $\phi$. Esta 
+estrutura é usada pois é necessário garantir que um quantum e seu \textit{mirror} 
+jamais serão atribuídos à mesma cláusula dual mínima.
+
+A partir destas estruturas a busca consiste em reduzir o $G_\phi$, garantido 
+as propriedades da CNF. Com isso a busca é feita utilizando os critérios 
+de qualidade $\succ$ são apresentados a seguir.
+
+Seja $$F_{i}^{G} = F_i \bigcap G_\phi, 
+\overline{F}_{i=1}^{k} = \overline{F}_i \bigcap G_\phi\ e 
+F_ij = F_{i}^{G} \bigcap F_{j}^{G}$$.
+
+\noindent Então seguem os critérios
+
+\begin{itemize}
+  \item se $|F_{i}^{G} - F_ij| > |F_{j}^{G} - F_ij|$ então 
+  $\phi_i \succ \phi_j$ senão $\phi_j \succ \phi_i$
+  \item se $|F_{i}^{G} - F_ij| = |F_{j}^{G} - F_ij|$ então, 
+  se $|\overline{F}_{i}^{G} - \overline{F}_ij| > |\overline{F}_{j}^{G} - \overline{F}_ij|$ 
+  então $\phi_i \succ \phi_j$ senão $\phi_j \succ \phi_i$
+\end{itemize}
+
+O algoritmo \ref{alg:sucessores} é o algoritmo completo de busca de sucessores.
+
+\begin{algorithm}[H]
+\caption{Algoritmo de busca de sucessores de um quantum}\label{alg:sucessores}
+\begin{algorithmic}[1]
+\Procedure{successors}{$F(\phi)$}\Comment{Recebe o quantum}
+\State$\Omega \gets$ \O \Comment{Inicializa a lista de sucessores}
+\State$\Theta \gets \{\phi^F \mid \phi \in C\ and\ C \in G_\phi \} - X_\phi$
+\Comment{Encontra o conjunto de possíveis sucessões}
+\State$Ordene(\Theta, \succ)$ \Comment{Ordena $\Theta$ de acordo com o critério $\succ$}
+\If{$\exists C \in R_\phi ,\Theta \cap C =$ \O}
+    \State \textbf{return} \O
+\EndIf
+\For{$\phi^F in\ \Theta$}
+    \State$\Phi^+ \gets \Phi \bigcup \{\phi^F\} $
+    \If{ 
+    $\forall\phi_{i}^{F_i}, F_{i}^{*} \not\subset F$
+    and $\emptyset \notin R_{\phi+}$
+    and $\forall C \in R_{\phi +}, C \not\subset X_\phi$
+    }
+        \State $\Omega \gets \Omega \bigcup \{ \Phi^+ \}$
+    \EndIf
+\EndFor
+\State \textbf{return} $\Omega$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+Os estados finais ocorrem quando $G_\phi = \emptyset$ ou quando não existem mais 
+sucessores possíveis.
+
+\section{Computação Paralela}
+\label{sec:parallel}
+
+A computação paralela é a área da computação que estuda os processos 
+que são executados simultaneamente. A computação paralela pode ser divida 
+em diversas subáreas, uma vez que existem diversas formas de se executar 
+processos em paralelo, indo desde o paralelismo em nível de instrução\cite{Rau2003} 
+até \textit{clusters} de diversos computadores independentes\cite{Coulouris2011}.
+
+Do ponto de vista da arquitetura de computação paralela existem diversas classificações. 
+Uma delas é a taxonomia de Flynn\cite{Flynn1972}, apresentada na tabela \ref{tab:flynn}, que divide as arquiteturas 
+paralelas em relação aos seus dados e processos, hoje grande parte dos sistemas são MIMD. 
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+                & Única Instrução & Múltipla Instrução \\ \hline
+Dado Único      & SISD            & MISD               \\ \hline
+Múltiplos Dados & SIMD            & MIMD               \\ \hline
+\end{tabular}
+\caption{Taxonomia de Flynn}\label{tab:flynn}
+\end{center}
+\end{table}
+
+Outra forma de se pensar em arquiteturas paralelas é com relação a memória, sendo essa 
+uma divisão clássica, dividindo-se as arquiteturas entre sistemas que utilizam memória 
+compartilhada e sistemas que utilizam memória distribuída\cite{patterson2012computer}.
+
+Existem diferentes tipos de paralelismo: no paralelismo em nível de instruções, 
+um processador executa as instruções do programa através de um \textit{pipeline}\cite{patterson2012computer}.
+No paralelismo em nível de dados, uma dada tarefa pode ser executada em paralelo 
+dividindo-se os dados a serem processados em um nó diferente\cite{Hillis1986}. E em nível de tarefa, 
+as diferentes partes de uma tarefa são distribuídas entre diferentes nós\cite{Quinn2003}.
+
+Existem diversos paradigmas de programação paralela\cite{Kumar2002}. Um deles é o mestre/escravo, no qual 
+a um nó é atribuída a tarefa de mestre e este envia tarefas a serem realizadas pelos nós 
+escravos. Outra é a programa único múltiplos dados, no qual o espaço de dados é dividido 
+entre múltiplos nós e estes executam a mesma tarefa com a sua parte de dados. Outro paradigma 
+parecido com este é o de \textit{pipeline} de dados, em que o processamento dos dados é dividido 
+em etapas e cada etapa é realizada em um nó diferente.Um paradigma importante é o dividir e 
+conquistar, que consistem em recursivamente dividir a tarefa entre os nós.
+
+Neste trabalho, tem-se como foco a subárea denominada computação distribuída, pois 
+o trabalho trata de um algoritmo que funciona através da troca de mensagens e sem memória 
+compartilhada\cite{Coulouris2011}. Sendo assim o algoritmo desenvolvido pode 
+funcionar tanto em um \textit{cluster} de computadores quanto em um processador \textit{multi-core}.
+
+O \textit{Track} de computação paralela da SAT \textit{Competition} é 
+feito em um processador de 12 núcleos com 36 GB de memória RAM.
+\footnote{http://www.satcompetition.org/2014/}
+
+\subsection{Paralelismo no problema SAT}
+
+\subsection{Algoritmos portfólio}
+
+Uma maneira simples de resolver SAT em paralelo é executar diversos \textit{SAT solvers} 
+em paralelo, esta técnica é conhecida com portfólio. Esta técnica funciona executando 
+diversas versões do \textit{SAT solver} ou diversos \textit{SAT solvers} com diferentes 
+características, sendo que em cada nó deve rodar um \textit{solver} otimizado para um 
+problema diferente assim obtendo uma performance média melhor. Esta técnica pode ser 
+denominada como completiva\cite{RicardoSousaMarques2013}. Esse funcionamento é representando 
+na figura \ref{fig:port}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/portfolio.jpg}
+    \caption{Funcionamento de um algoritmo portfólio\cite{nelson2013new}}
+    \label{fig:port}
+\end{figure}
+
+Uma das vantagens desta técnica é sua fácil implementação, uma vez que pode ser realizada 
+utilizando apenas um script que inicia os diversos \textit{SAT solvers} nos nós do sistema. 
+Outra vantagem desta técnica é possibilidade de sua execução em qualquer sistema paralelo, uma 
+vez que cada instancia do problema a ser resolvido é completamente independente.
+
+Para \textit{solvers} paralelos portfólio não existem problemas de controle ou em 
+sua arquitetura, porém eles não apresentam um grande ganho de desempenho. Existe um 
+ganho médio quando, no portfólio existe um \textit{solver} ou heurística que apresenta 
+uma performance muito boa para o problema a ser resolvido, porém isso pode não acontecer ou 
+o ganho pode ser pequeno. Outra questão é que boa parte do poder computacional utilizado 
+é simplesmente desperdiçado, assim apresentando uma má utilização dos recursos disponíveis. Por 
+fim esta técnica não apresenta nenhum ganho para problemas que são insatisfazíveis, e mesmo 
+neste cenário apresenta um custo muito maior.
+
+Uma implementação popular da técnica portfólio para o problema SAT é o ManySAT\cite{Hamadi09manysat}. 
+Este \textit{SAT solver} utiliza diferentes configurações aplicadas ao \textit{solver} 
+MiniSAT e ao preprocessador SatElite, com isso ele obtém um bom ganho de desempenho 
+pois os algoritmos baseados em DPLL modernos são bastante sensíveis as diferentes 
+configurações de suas otimizações. O ManySAT foi amplamente testado em usos industriais 
+de \textit{solver} e ficou em primeiro lugar do \textit{track} de paralelo da SAT-Race de 2008.
+Este \textit{solver} foi desenvolvido pela Microsoft e pelo CRIL-CNRS.
+
+\subsection{Particionamento do espaço de busca}
+
+Esta técnica consistem em dividir os espaço de busca do problema a ser explorado em espaços de 
+busca menores a serem processados nos vários nós do sistema. A divisão da busca pode ser feita 
+de diversa maneiras, sendo aplicada tanto em sistemas multi-core quanto sistemas conectados 
+através de uma rede.Esta técnica também é bastante popular, sendo bastante utilizada na paralelização 
+de algoritmos baseado tanto em DPLL quanto em CDCL. As diferentes formas de implementação desta 
+técnica são apresentadas a seguir. Este trabalho também utiliza esta técnica, na seção de desenvolvimento 
+serão apresentados detalhes de como esta técnica foi utilizada no algoritmo QuantumSAT.
+
+O DPLL clássico pode ser paralelizado através da execução em paralelo de sua busca recursiva. 
+Para se fazer isto todos os nós recebem $\Phi$ e então cada nó recebe uma fórmula simplificada 
+diferente. Além das otimizações presentes na versão sequencial do DPLL podem ser feitas 
+otimizações para a melhor execução em paralelo deste algoritmo, destaca-se a escolha 
+da forma como serão distribuídas as fórmulas simplificadas.
+
+Existem diversas implementações do DPLL em paralelo. A primeira delas foi o PSatz\cite{Jurkowiak2005}, esta 
+foi uma implementação simples da técnica que não utilizava nenhuma otimização além 
+das apresentadas no DPLL clássico, descrito no algoritmo \ref{alg:DPLL}. Esta implementação 
+foi feita originalmente utilizando processadores \textit{single core} conectados em rede 
+e posteriormente foi portada para processadores \textit{multi core} com memória compartilhada\cite{holldobler2011short}.
+Na comparação entre estas duas versões foi visto que a versão para rede tem uma performance 
+melhor que a para memória compartilhada, isto se dá pois na versão 
+com memória compartilhada os processos entram em uma condição de corrida para obter acesso 
+aos recursos o que causa um \textit{overhead} maior que a comunicação por rede.
+
+O CDCL é um algoritmo mais complexo de se paralelizar, pois com a adição da estrutura de 
+cláusulas aprendidas a busca é feita de maneira pouco ordenada, o que dificulta o processo 
+de divisão das tarefas. Boa parte das versões paralelas do CDCL são implementadas 
+utilizando múltiplos processadores conectados em rede, dado que o acesso não uniforme 
+aos dados causa um overhead muito grande quando se utiliza memória compartilhada. 
+
+A maioria dos algoritmos CDCL paralelos utiliza a técnica de mestre e escravo, onde 
+o mestre possui as cláusulas aprendidas e passa as tarefas para os escravos. Para se 
+otimizar este algoritmo utilizam-se algumas técnicas, como criação dinâmica de escravos e 
+a utilização de \textit{lookahead} para seleção de ramificação das cláusulas. Existem 
+alguns algoritmos que dividem esta tarefa em nós iguais, normalmente estes compartilham 
+todas as cláusulas aprendidas com todos os nós, isto causa um grande 
+\textit{overhead} de comunicação na rede.
+
+O PMSat\cite{Gil_pmsat} é uma versão paralela do MiniSAT\cite{Sorensson02minisat}. 
+Este algoritmo usa um método bastante comum 
+em \textit{SAT solvers} paralelos, que é o particionamento do espaço de busca, assim 
+dividindo as cláusulas em diversos nós, neste \textit{solver} o usuário pode configurar 
+a heurística para divisão do espaço de busca. Além disto ele também utiliza heurísticas para 
+cooperação entre nós através do compartilhamento das cláusulas aprendidas e dos conflitos.
+Este \textit{solver} foi desenvolvido em C++ e MPI e sua arquitetura é apresentada na figura \ref{fig:PMSat}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/PMSat.jpeg}
+    \caption{Arquitetura do PMSat}
+    \label{fig:PMSat}
+\end{figure}
+
+Como pode-se ver nas implementações apresentadas esta técnica apresenta vários desafios. O 
+balanço de carga é um problema complexo em toda a área de computação paralela, neste contexto 
+a solução esta na divisão do espaço de busca em um grande número de espaços, e dinamicamente 
+se distribuir as tarefas a medida que os escravos ficam inativos. Outro problema existe em sistemas 
+conectados através de uma rede, onde pode existir uma corrida pelos recursos da rede, este problema 
+pode ser mitigado utilizando redes com uma maior banda. Em sistemas de memória compartilhada 
+pode-se estourar a memória quando são criados muitos subespaços de busca, isto é mitigado adicionando 
+mais memória ao sistema.
+
+Este trabalho também utiliza esta técnica, na seção de desenvolvimento 
+serão apresentados detalhes de como esta técnica foi utilizada no algoritmo QuantumSAT.
+
+\subsection{Particionamento do problema}
+
+Esta técnica consiste em dividir a fórmula proporcional a ser resolvida em fórmulas menores,
+realizar a busca da solução destas fórmulas em paralelo e combinar as soluções. Apesar da 
+busca pela solução poder ser feita em paralelo existe a necessidade de comunicação entre os nós, 
+pois existem variáveis compartilhadas entre as fórmulas.
+
+O \textit{sat solver} JACK-SAT \cite{Singer2008} implementa esta técnica, sua implementação original divide a fórmula 
+proporcional V em duas fórmulas V1 e V2, criando assim dois problemas P1=(V1,C1) e P2=(V2,C2) 
+sendo C1 e C2 as variáveis que estão presente exclusivamente em V1 e V2 respectivamente, também 
+é criado um conjunto C3, com as variáveis compartilhadas em as fórmulas. Cada problema é resolvido 
+independentemente e é o após isso o algoritmo tenta combinar as soluções, procurando as soluções não 
+conflitantes com as variáveis em C3. Existem diversas melhorias nesta implementação que não serão 
+discutidas, pois a ideia central da implementação é a mesma. Outra melhoria possível seria a tentativa 
+de se evitar conflitos com C3 durante a busca pelas soluções de P1 e P2.
+
+Esta técnica não é muito popular devido aos seus problemas. Sendo um deles que a busca da solução dos 
+subproblemas também apresenta complexidade exponencial. Outro é que a adição da etapa de junção das 
+soluções cresce de forma exponencial com o número de soluções encontradas para os subproblemas. Além 
+disto esta técnica apresenta uma escalabilidade muito baixa, o que não é desejado pois a tendencia 
+é um aumento no número de nós dos sistemas.
+
+\chapter{Desenvolvimento}
+
+Nesta seção serão apresentados os diversos aspectos referentes ao desenvolvimento
+do presente trabalho. Esta seção primeiro apresenta o algorítimo desenvolvido. Após são 
+descritas as tecnologias utilizadas durante o desenvolvimento do trabalho, seu 
+funcionamento e a motivação de sua escolha. Além disso também será apresentado o ambiente 
+e metodologia de testes.
+
+\section{Tecnologias Utilizadas}
+
+Nesta implementação escolheu-se como linguagem de programação o Erlang, esta descisão resulta 
+em um grande impacto nos resultados do trabalho.
+
+Erlang apresenta como caracteristica maior a sua grande utilização em sistemas distribuidas, 
+principalmente sistemas que lidam com um grande um número de chamadas e necessita grande confiabilidade, 
+porém também apresenta alguns usos tem cenários de computação ciêntifica \cite{}. Está linguagem 
+apresenta como principal vantagem um grande número de ferramenta para computação distribuida, sendo 
+estas ferramentas bastante estáveis e eficentes. Outra vantagem é fato de Erlang ser uma linguagem 
+funcional, este paradigma é bastante eficiente para computação distribuida pois faz com que o código 
+apresente poucas condições de corrida e não utilize váriaveis compartilhadas\cite{}. Erlang também permite 
+facilmente se integrar com outras linguagens de programação mais eficientes em outras tarefas.
+
+Também foi utilizada a tecnologia de \textit{cloud computing}, neste trabalho foi utilizada a 
+\textit{cloud} da Amazon. Esta tecnologia permite a criação de virtualmente infinitas máquinas 
+virtuais, sendo possivel assim fazer testes sobre a escalabilidade do sistema. Esta tecnologia 
+também permite a criação de máquinas virtuais com as caracteristicas desejadas para a pesquisa, neste 
+caso diversas máquinas com apenas um core.
+
+\section{Algoritmo de Busca}
+
+Como dito anteriormente este algoritmo realiza uma busca em um espaço de estados. Esta busca 
+é também a parte mais longa do algoritmo, uma vez que é necessário que a mesma visite todos os
+estados possíveis do problema para que o mesmo seja provado insatisfazível ou para que sejam encontradas 
+todas as soluções.
+
+Existem dois modos de realizar uma busca em um espaço de estados, em largura(BFS, sigla em inglês) ou em 
+profundidade(DFS, sigla em inglês). A busca em largura funciona partindo de uma raiz e visitando todos 
+os seus vértices. A busca em profundidade funciona partindo de uma raiz e explorando cada ramo do espaço 
+até que seja encontrado um nó folha, quando este é encontrado é realizado o \textit{backtracking}.
+
+Ambas as buscas pode ser exaustivas, assim visitando todos os nós possíveis, ou parar quando a primeira 
+solução é encontrada. Sendo assim a implementação pode resolver tanto o problema SAT quanto suas 
+extensões, como o UNIQUE-SAT, onde o problema tem apenas uma solução. Para maioria dos casos é melhor 
+parar na primeira solução encontrada, pois assim o algoritmo é mais rápido e raramente o tamanho da 
+solução é importante.
+
+Para a implementação deste trabalho foi utilizada a linguagem erlang, uma linguagem funcional, assim 
+foi implementada uma versão recursiva do algoritmo de busca em profundidade. A versão clássica deste 
+algorítimo funciona recebendo um grafo e um vértice a ser visitado. Marca-se o vértice como visitado 
+e recursivamente chama-se a função para todos os vértices adjacentes ainda não marcados como visitados. 
+Esta versão pode ser vista no pseudo-código a seguir:
+
+\begin{algorithm}
+\caption{Pseudo-código de um algoritmo funcional de busca em profundidade(DFS)} \label{alg:dfs}
+\begin{algorithmic}[1]
+\Procedure{DFS}{G,v}
+\State marque v como visitado
+\For{todo vértice w em G.verticesAdjacentes(v)}
+  \If{w não é marcado como visitado}
+    \State DFS(G,w)
+  \EndIf
+\EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+Porém no caso deste trabalho o grafo de estados não está pronto no momento em que o algoritmo é chamado,
+ele é construído no momento em que o estado é visitado em seus sucessores são calculados. Sendo assim 
+foi necessário modificar o algoritmo clássico para o cenário do trabalho. Para isso foi modificada a 
+entrada da função, nesta implementação a função recebe uma pilha de estados a visitar. A partir daí 
+o algoritmo desempilha o primeiro estado, calcula os seus sucessores, empilha em ordem os estados 
+sucessores e recursivamente chama a função até que a pilha esteja vazia. Esta implementação básica 
+é apresentada no pseudo código a seguir:
+
+\begin{algorithm}
+\caption{Pseudo-código de um algoritmo funcional DFS para grafo incompleto} \label{alg:dfs-incomplete}
+\begin{algorithmic}[1]
+\Procedure{Busca}{S}
+\If{S é vazio}
+\State \textbf{return}
+\Else
+  \State Estado = desempilhe(S)
+  \State Succ = encontreSucessores(Estado)
+  \State empilhe(Succ, S)
+  \State Busca(S)
+\EndIf
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+Na versão implementada neste trabalho o estado é composto por um $\phi$ incompleto, que é a lista 
+de quantum associados ao estado, um forbidden, que é a lista dos quanta que não podem mais ser associados 
+ao estado, e o gap, que o conjunto de clausulas que não contém um literal no $\phi$.
+
+Outra característica da implementação deste trabalho é o cálculo dos sucessores, que é feito utilizando 
+uma função de qualidade. Esta função seleciona o quantum que cobre o maior número de cláusulas, como 
+critério de desempate é selecionado o quantum cujo \textit{mirror} cobre o maior número de cláusulas. 
+O estado cujo gap é vazio deve ser colocado como uma solução e não deve ser adicionado nos sucessores. 
+Também deve-se considerar como final o estado que não reduz o tamanho gap, este não deve ser adicionado 
+aos sucessores nem as soluções.
+
+%Uma descrição visual do funcionamento do algoritmo é apresentada na imagem a seguir.
+
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=1.2\textwidth]{figuras/AlgRep.pdf}
+%    \caption{Arvore de decisão da implementação do trabalho}
+%    \label{fig:AlgRep}
+%\end{figure}
+
+\subsection{Busca Paralela}
+
+Uma busca em grafos pode ser realizada de duas formas, em profundidade e em largura. A busca em 
+profundidade explora os nós do grafo seguindo através dos filhos dos nós. A busca em largura explora 
+os nós do grafo seguindo através dos vizinhos dos nós.
+
+A implementação sequencial deste algoritmo utilizou uma busca em largura, esta busca foi escolhida pois 
+a utilização desta implementação necessitava da menor solução para o problema SAT, sendo assim necessitava 
+fazer uma busca completa, com essa restrição o modo de busca era pouco importante.
+
+Para o caso desta implementação desejamos apenas encontrar uma solução qualquer, o mais rápido possível, 
+neste caso a forma da busca pode ter algum impacto. Para verificar isto decidi utilizar um método 
+empírico, pois as duas implementações são facilmente realizadas e alguns testes rápidos mostrariam 
+evidencias suficientes para que uma boa decisão fosse tomada. Realizei os testes utilizando algumas 
+instâncias do problema SAT aleatórias pequenas.
+
+A busca em largura apresentou algumas vantagens no balanceamento de carga, uma vez que foi possível 
+cada nó do sistema realizar uma porção menor do trabalho, porém essa característica apresenta uma 
+desvantagem ela necessita de muito mais comunicação entre os nós. Outra desvantagem está no fato de 
+a forma com que a busca é realizada faz com que sejam explorados mais estados antes da primeira solução 
+ser encontrada, na média das buscas.
+
+A busca em profundidade apresentou as vantagens de possuir menos comunicação entre os nós e de encontrar 
+a primeira solução explorando menos estados. Porém apresenta um balanço de carga entre os nós pior, esse 
+cenário pode ser agravado se os nós apresentarem diferenças de performance.
+
+\section{exemplo}
+
+Neste exemplo utilizaremos dois nós e a pré-execução em paralelo com apenas um nível na arvore. Este 
+exemplo funciona para demostrar a lógica de funcionamento paralelo do algoritmo, porém a implementação 
+na prática funciona com parâmetros diferentes. O exemplo utiliza o seguinte $\phi$
+
+$$0: ( p_2\vee\neg p_3\vee p_4\vee\neg p_1) \wedge $$
+$$1: ( \neg p_2\vee\neg p_1\vee p_4\vee p_3) \wedge $$
+$$2: ( p_2\vee p_3\vee\neg p_4\vee p_1) \wedge $$
+$$3: ( p_1\vee p_4\vee p_3\vee p_2) \wedge $$
+$$4: ( p_2\vee p_4\vee\neg p_1\vee p_3) \wedge $$
+$$5: ( p_2\vee\neg p_1\vee\neg p_3\vee\neg p_4) \wedge $$
+$$6: ( \neg p_1\vee\neg p_3 \vee p_4\vee\neg p_2) \wedge $$
+$$7: ( p_4\vee\neg p_3\vee p_1\vee\neg p_2) \wedge $$
+$$8: ( p_1\vee\neg p_2 \vee\neg p_4\vee p_3) \wedge $$
+$$9: ( p_3\vee\neg p_1\vee\neg p_2\vee\neg p_4) $$
+
+Sendo assim o quanta gerado é o seguinte:
+
+$P_1^{\{3,4,8,9\}}, \neg P_1^{\{1,2,5,6,7,10\}}, P_2^{\{1,3,4,5,6\}}, \neg P_2^{\{2,7,8,9,10\}},$
+$P_3^{\{2,3,4,5,9,10\}}, \neg P_3^{\{1,6,7,8\}}, $
+$P_4^{\{1,2,4,5,7,8\}}, \neg P_4^{\{3,6,9,10\}} $
+
+A imagem a seguir descreve o funcionamento do algoritmo na situação citada anteriormente. A nó 
+a@comp é o nó que realiza controle do sistema, ele responsável por manter os estados que ainda 
+necessitam ser expandidos, as soluções dos que já foram expandidos e a ordem correta da comunicação, 
+fisicamente este nó pode mudar de localização em caso de falha, esta tarefa cabe aos supervisors. 
+Os nós 1@comp e 2@comp são os trabalhadores eles recebem um estado a ser expandido, realiza sua expansão 
+e retorna o resultado para o nó a@comp.
+
+Neste caso o nó 1@comp pegará o estado com o phi: [-1] e o expandirá, assim retornando a 
+solução {phi:[-1,4,2,3], phi ...}, o nó 2@comp pegará o estado com o phi: [4] e retornará a solução 
+{phi: [4,2,3], phi ...}, como o nó 2@comp precisa visitar menos estados durante a sua expansão este 
+acabará antes e então pegará o estado com phi: [-2] e assim por diante. Lembrando que este exemplo 
+serve para exemplificar o funcionamento do algoritmo por isso está buscando todas as soluções, a 
+execução real para assim que a primeira solução é encontrada e caso o nó não encontre solução ele 
+simplesmente retorna {}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/nodeDynamic.png}
+    \caption{Dinâmica dos nós}
+    \label{fig:port}
+\end{figure}
+
+Para demonstrar o funcionamento paralelo do algoritmo também é importante conhecer o funcionamento do
+\textit{state pool}, a figura a seguir apresenta os três primeiros estados da \textit{state pool}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/threeStates.png}
+    \caption{Estados iniciais}
+    \label{fig:port}
+\end{figure}
+
+\chapter{Resultados Experimentais e Análises}
+
+\section{cenário}
+
+Em termos de hardware foram utilizados dois modelos de hardware para os testes, um cenário 
+distribuído de máquinas virtuais rodando em uma \textit{cloud} o outros sendo uma máquina multi-core, 
+para este trabalho o primeiro cenário é mais importante pois a implementação realizada se 
+adequá mais a este cenário, a máquina multi-core foi utilizada para poder realizar comparação com 
+outros \textit{SAT solvers}, melhorias possíveis para o cenário multi-core são discutidas na conclusão.
+
+Para o cenário distribuído foi utilizada a \textit{cloud} da Amazon, a plataforma completa é comercialmente 
+conhecida como AWS, neste trabalho foi utilizado serviço EC2 que permite criar servidores virtuais. 
+Esta plataforma apresenta a vantagem ser possível criar diversas máquinas virtuais conectadas para se  
+realizar o teste em um cenário com memória distribuída e com nós se comunicando através de mensagens, 
+sua principal desvantagem consiste no fato de serem máquinas virtuais rodando em ambiente desconhecido o 
+que implica em menos controle do cenário, por exemplo quais outros processos estão rodando na máquina 
+física ou qual rede está conectando as máquinas. O ambiente ideal seria um cluster onde se fossem 
+conhecidas todas as características, porém não conseguimos acesso a um cluster como esse, sendo assim 
+a cloud se mostrou uma boa alternativa. Para estes teste foram criadas máquinas virtuais single core, 
+sendo criados os nós para execução da busca e um nó para integração e distribuição de tarefas.
+
+Para o cenário multi-core foram utilizadas duas máquinas. A primeira é possui um core i7-4790 com 
+16gb de mémoria ram, utilizando o sistema operacional Linux(distribuição Ubuntu). O segundo é a 
+máquina da UFSC, não consegui acessar ela hj. Estas máquinas forma utilizadas para testar uma comparação 
+entre o \textit{SAT solver} implementado e o clucose, além disso também foram utilizadas para testes de 
+decisão do modelo de busca a ser utilizado. A principal vantagem de se usar máquinas multi-core 
+está no fato de ser fácil de executar os SAT solvers. Ambas as máquinas rodaram os testes sendo 
+acessas por SSH e rodando a versão mais leve do sistema operacional, assim reduzindo o impacto da 
+execução do sistema nos testes.
+
+Para facilitar, padronizar e ter uma execução mais rápida dos testes utilizei os testes disponíveis na 
+SATLIB(http://www.cs.ubc.ca/~hoos/SATLIB/benchm.html), utilizando os testes 3-SAT randômicos uniformes 
+indo de 20 variáveis a 250 variáveis e indo de 91 clausulas a 1065 clausulas, sendo que utilizei a 
+média de 100 instancias. Também utilizei alguns testes utilizados na SAT competition para um maior 
+volume de variáveis e cláusulas, porém como utilizei menos instancias neste caso o seu valor estatístico 
+comprometido.
+
+\section{Resultados e Análise de tempo}
+
+Os teste de tempo foram realizados em ambos os cenários, no cenário de computação podemos ter uma melhor 
+ideia do comportamento do algoritmo no seu cenário ideal. Na máquina multi-core podemos realizar uma 
+comparação com um outro \textit{SAT solver}, neste caso o \textit{SAT solver} escolhido foi o Glucose 
+pois este é uma versão paralela de um algoritmo CDCL, apresenta um bom desempenho e é de fácil utilização.
+
+No teste realizado na máquina \textit{multi-core} a implementação realizada neste trabalho apresentou 
+um desempenho significativamente pior que o \textit{SAT solver} escolido para comparação. Muitos 
+motivos podem ser apresentados para o desempenho inferior da implementação deste trabalho, primeiramente 
+o Glucose é um \textit{SAT solver} bastante consolidado e otimizado, sendo desenvolvido desde 2009. Outro 
+motivo está na linguagem utilizada, neste trabalho utilizamos Erlang enquanto o Glucose é implementado em 
+C++, C++ por ser uma linguagem de mais baixo nível apresenta um desempenho melhor do que Erlang, porém 
+Erlang apresenta ferramenta que facilitam a implementação distribuída e ferramentas de comunicação bastante 
+eficientes. Os resultados comparativos podem ser vistos na tabela e gráfico abaixo.
+
+Quando os testes são executados em uma máquina distribuída podemos ver uma clara melhoria na implementação 
+desenvolvida, isso se deve a implementação realizada ter esse cenário em mente. Apesar disso se comparamos 
+aos tempos do Glucose com mesmo número de nós ele ainda apresenta um resultado melhor, porém essa 
+comparação é bastante imprecisa uma vez que os cenários são completamente diferentes, esse resultado 
+também se deve aos fatores apresentados anteriormente. Apesar disso para uma primeira implementação 
+os resultados são bastante satisfatórios. Os resultados são apresentados na tabela e no gráfico 
+abaixo.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/results_compare.png}
+    \caption{Comparação com o glucose}
+    \label{fig:port}
+\end{figure}
+
+\begin{table}[!htb]
+\centering
+\caption{Resultados para Glucose e ParaQuantumSAT}
+\label{my-label}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+\hline
+         & \multicolumn{4}{l|}{Glucose}              \\ \hline
+Problema & 1 thread & 2 thread & 4 thread & 8 thread \\ \hline
+uf20     & 0.0000   & 0.000    & 0.000    & 0.000    \\ \hline
+uf50     & 0.0026   & 0.0016   & 0.000    & 0.000    \\ \hline
+uf75     & 0.0084   & 0.0084   & 0.0060   & 0.0098   \\ \hline
+uf100    & 0.0085   & 0.0082   & 0.0070   & 0.0068   \\ \hline
+uf125    & 0.012    & 0.0094   & 0.0089   & 0.0086   \\ \hline
+uf150    & 0.086    & 0.070    & 0.062    & 0.065    \\ \hline
+uf175    & 0.124    & 0.110    & 0.103    & 0.099    \\ \hline
+uf200    & 0.188    & 0.102    & 0.099    & 0.080    \\ \hline
+uf225    & 0.232    & 0.184    & 0.128    & 0.103    \\ \hline
+uf250    & 0.318    & 0.181    & 0.108    & 0.088    \\ \hline
+         & \multicolumn{4}{l|}{ParaQuantumSAT}       \\ \hline
+Problema & 1 thread & 2 thread & 4 thread & 8 thread \\ \hline
+uf20     & 0.0012   & 0.0008   & 0.000    & 0.000    \\ \hline
+uf50     & 0.0086   & 0.0078   & 0.0076   & 0.0076   \\ \hline
+uf75     & 0.016    & 0.0124   & 0.0103   & 0.0098   \\ \hline
+uf100    & 0.0186   & 0.0182   & 0.0176   & 0.0163   \\ \hline
+uf125    & 0.023    & 0.023    & 0.021    & 0.019    \\ \hline
+uf150    & 0.106    & 0.133    & 0.162    & 0.122    \\ \hline
+uf175    & 0.242    & 0.218    & 0.173    & 0.122    \\ \hline
+uf200    & 0.299    & 0.215    & 0.176    & 0.152    \\ \hline
+uf225    & 0.352    & 0.302    & 0.271    & 0.212    \\ \hline
+uf250    & 0.428    & 0.396    & 0.318    & 0.278    \\ \hline
+\end{tabular}
+\end{table}
+
+\section{Resultados e Análise de escalabilidade}
+
+Sendo está característica bastante importante em sistemas distribuídos este resultado é bastante importante.
+Esta implementação apresentou um bom resultado com relação a escalabidade, sendo testado com um grande 
+volume de nós e escalando bem com a adição de nós. Também é claro que com o aumento do tamanho dos 
+problemas a eficiência da execução em paralelo aumenta, isso se deve a uma diminuição relativa do 
+\textit{overhead} causado pela comunicação e outras características paralelas em relação ao tempo 
+de execução. Os resultados são apresentados na tabela e no gráfico abaixo.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/results_paraq.png}
+    \caption{Teste de escalabilidade}
+    \label{fig:port}
+\end{figure}
+
+\begin{table}[!htb]
+\centering
+\caption{Tabele de resultados de escalabilidade}
+\label{my-label}
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+              & \multicolumn{6}{l|}{ParaQuantumSAT}       \\ \hline
+Problema      & 1 nós    & 2 nós    & 4 nós    & 8 nós    & 16 nós   & 32 nós \\ \hline
+uf20          & 0.000    & 0.000    & 0.000    & 0.000    & 0.000    & 0.000  \\ \hline
+uf50          & 0.0042   & 0.0016   & 0.000    & 0.000    & 0.000    & 0.000  \\ \hline
+uf75          & 0.0086   & 0.0064   & 0.0044   & 0.000    & 0.000    & 0.000  \\ \hline
+uf100         & 0.0122   & 0.0103   & 0.0079   & 0.0066   & 0.000    & 0.000 \\ \hline
+uf125         & 0.0134   & 0.0098   & 0.0089   & 0.0081   & 0.0069   & 0.0054  \\ \hline
+uf150         & 0.0196   & 0.133    & 0.102    & 0.082    & 0.061    & 0.052  \\ \hline
+uf175         & 0.222    & 0.198    & 0.171    & 0.152    & 0.141    & 0.112  \\ \hline
+uf200         & 0.269    & 0.252    & 0.221    & 0.202    & 0.186    & 0.151  \\ \hline
+uf225         & 0.317    & 0.299    & 0.275    & 0.222    & 0.201    & 0.192  \\ \hline
+uf250         & 0.389    & 0.373    & 0.348    & 0.313    & 0.274    & 0.248  \\ \hline
+SATComp-800   & 2.337    & 2.033    & 1.643    & 1.332    & 0.989    & 0.802  \\ \hline
+SATComp-1600  & 5.123    & 4.671    & 4.032    & 3.524    & 2.952    & 2.424  \\ \hline
+\end{tabular}
+\end{table}
+
+Analisando os dados apresentados podemos ver que na maoiria dos testes com 32 nós a performance é 
+em torno de 50\% maior que com apenas um nós, um resultado bastante possitivo se tratando de um 
+problema NP. Tambem podemos ver que com o dobro de nós temos um ganho de desempenho de em média 16\%, 
+também bastante possivo dado a classe do problema.
+
+\section{Resultados e Análise de uso dos Nós}
+
+Este teste é bastante interessante para se analisar a distribuição de carga do sistema, uma vez que é 
+desejável a maior utilização possível da capacidade computacional do sistema. Isto é desejável pois 
+além pois além de evitar nós em \textit{idle} disperdisando o seu poder computacional e piorando o 
+desempenho do sistema, estes nós em \textit{idle} também estão desperdiçando energia e consumindo 
+recursos financeiros. O gráfico abaixo mostra o percentual de tempo em que nós passou trabalhando na 
+busca, para verificar isso foi considerado que o nó estava trabalhando na busca quando o CPU do mesmo 
+está com uma taxa de uso de mais de 90\%. Para facilitar a visualização são mostrados apenas os nós pares 
+além do nó 1.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/cpu_use.png}
+    \caption{Teste de escalabilidade}
+    \label{fig:port}
+\end{figure}
+
+\chapter{Trabalhos Futuros e Conclusão}
+
+\section{Trabalhos Futuros}
+
+Este trabalho apresenta o desenvolvimento de uma primeira versão paralela do algoritmo 
+\textit{SAT solver} ParaQuantumSAT, então é passível de várias melhorias.
+
+Como foi mencionado anteriormente o trabalho foi completamente implementado em Erlang, 
+isso implica numa boa eficiência em respeito a comunicação, porém apresenta um baixo desempenho 
+quando se trata de tarefas computacionalmente pesadas. Isso pode ser melhorado utilizando 
+Erlang para a comunicação paralela e utilizar C para a realização da busca na arvore de 
+estados.
+
+Outra melhoria possível está no estudo de melhores heurísticas para realizar a busca 
+de sucessores na arvore, isso em si melhoraria o desempenho do algoritmo, porém quando 
+se trata do cenário paralelo o ganho poderia ser ainda maior, pois neste cenário é 
+possível utilizar múltiplas heurísticas ao mesmo tempo.
+
+\section{Conclusão}
+
+Neste trabalho foi apresentado um algoritmo \textit{SAT solver} paralelo em sua primeira implementação,
+este algoritmo não apresentou o melhor desempenho bruto possível, sendo claramente pior que outros 
+SAT solver disponíveis. Porém apresentou algumas características positivas, apresentando uma boa 
+escalabilidade, algo altamente desejado em sistemas distribuídos uma vez que para uma melhoria de 
+desempenho basta adicionar mais nós ao sistema. Outra característica positiva do algoritmo implementado 
+esta no bom uso da capacidade dos nós e no bom balanceamento de carga do sistema. Uma inovação do trabalho 
+também foi o uso da linguagem Erlang, pouco utilizada nestes cenários porém bastante interessante de se 
+pesquisar, pois apresenta um bom desempenho para a computação distribuída e pode ser utilizada em conjunto 
+com outras linguagens mais eficientes na parte de computação pesada.
+
+
+\abreviatura{DPLL}{Davis-Putnam-Logemann-Loveland, uma classe de algoritmos \textit{SAT solver}}
+\abreviatura{CDCL}{Conflict-Driven Clause Learning, uma classe de algoritmos \textit{SAT solver}}
+\abreviatura{CPU}{}
+\simbolo{$\phi$}{Phi, representa a fórmula proposional}
+\simbolo{$\prod$}{Produtório}
+
+
+\bibliographystyle{ufscThesis/ufsc-alf}
+\bibliography{bibliografia}
+
+%--------------------------------------------------------
+% Elementos pós-textuais
+\apendice
+\chapter{Exemplificando um Apêndice}
+Texto do Apêndice aqui. 
+
+\anexo
+\chapter{Exemplificando um Anexo}
+Texto do anexo aqui.
+\end{document}
