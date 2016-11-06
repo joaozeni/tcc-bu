@@ -26,16 +26,16 @@
 % Identificadores do trabalho
 % Usados para preencher os elementos pré-textuais
 \instituicao[a]{Universidade Federal de Santa Catarina} % Opcional
-\departamento[a]{Biblioteca Universitária}
-\curso[o]{Programa de ...}
-\documento[o]{Dissertação} % [o] para dissertação [a] para tese
+\departamento[a]{Departamento de Informática e Estatística}
+\curso[o]{Curso de Ciências da Computação}
+\documento[o]{Monografia} % [o] para dissertação [a] para tese
 \titulo{ParaQuantumSAT: Um algoritmo \textit{SAT solver} distribuído}
 \autor{João Guilherme Zeni}
 \grau{Bacharel em Ciências da Computação}
 \local{Florianópolis} % Opcional (Florianópolis é o padrão)
 \data{04}{junho}{2013}
-\orientador[Orientador\\Universidade Federal de Santa Catarina]{Prof. Dra. Jerusa Marchi}
-\coorientador[Coorientador\\Universidade Federal de Santa Catarina]{Prof. Dr. Mario Dantas}
+\orientador[Orientador]{Prof. Dra. Jerusa Marchi}
+\coorientador[Coorientador]{Prof. Dr. Mario Dantas}
 
 \numerodemembrosnabanca{2} % Isso decide se haverá uma folha adicional
 \orientadornabanca{nao} % Se faz parte da banca definir como sim
@@ -85,8 +85,8 @@ algoritmo SAT solver sequencial.}
 %\pretextuais % Substitui todos os elementos pre-textuais acima
 \listadefiguras % as listas dependem da necessidade do usuário
 \listadetabelas 
-\listadeabreviaturas
-\listadesimbolos
+%\listadeabreviaturas
+%\listadesimbolos
 \sumario
 %--------------------------------------------------------
 % Elementos textuais
@@ -206,19 +206,28 @@ problema SAT.
 para a lógica e para a ciência da computação, tendo sido estudada por um longo período por 
 diversos lógicos, porém estudo moderno da área começa com o livro \textit{Logic of Relatives(1883)} 
 de Charles Peirce, nos anos 1890 Gottlob Frege começa a estudar e desenvolver o conceito de sentenças,
-sendo o termo função proporcional cunhado por Bertrand Russell em \textit{Principles of Mathematics(1903)}. 
-Estes estudos tem sido amplamente aplicados em diversas áreas de ciência da computação como 
+sendo o termo função proposicional cunhado por Bertrand Russell em \textit{Principles of Mathematics(1903)}. 
+Estes estudos têm sido amplamente aplicados em diversas áreas de ciência da computação como 
 gramaticas formais, teoria da computação, algoritmos entre outros.
 
-Uma proposição, que consiste de conjunto de variáveis ou símbolos proposicionais, que possuem valores
+Uma proposição, que consiste de conjunto de variáveis ou literais, que possuem valores
 verdade, sendo os valores verdade ou falso, e pode ser formada de outras proposições com o uso de 
-conectores lógicos. Conectores lógicos compões proposições através da ligação de símbolos proposicionais, 
+conectores lógicos, a um proposição pode ser atribuído um sentido, chamado de asserção. Conectores 
+lógicos compões proposições através da ligação de variáveis e literais, 
 para este trabalho notam-se os conectores \textit{AND} representado por $\wedge$, \textit{OR} 
 representado por $\vee$ e \textit{NOT} representado por $\neg$. A semântica destes operadores 
-é descritos na tabela \ref{tab:a}.Outra estrutura são literais, que são variáveis que podem assumir 
+é descrita na tabela \ref{tab:a}. Outra estrutura são literais, que são variáveis que podem assumir 
 valores verdade. Fórmulas proposicionais são escritas utilizando conectores lógicos, símbolos proposicionais 
 e literais e são utilizado para se trabalhar com sentenças lógicas. Neste trabalho fórmulas proposicionais 
-serão representados pelo símbolo $\phi$.
+serão representados pelo símbolo $\Phi$.
+
+Fórmulas proposicionais são escritas utilizando operadores lógicos,
+que são símbolo utilizado para se trabalhar com sentenças lógicas. 
+Estes operadores possuem caráter binário, sendo usados para conectar 
+duas sentenças lógicas, e caráter unário, para atribuir uma propriedade 
+a uma sentença lógica. Como dito anteriormente aara este trabalho notam-se os operadores 
+\textit{AND} representado por $\wedge$, \textit{OR} representado 
+por $\vee$ e \textit{NOT} representado por $\neg$.
 
 \begin{table}[!htb]
 \begin{center}
@@ -247,7 +256,7 @@ como é apresentado abaixo na equação \ref{eq:CNF}. Toda fórmula proposicional po
 convertida para forma CNF através de um procedimento trivial. 
 
 \begin{equation} \label{eq:CNF}
-\phi = C_1\wedge C_2\wedge C_3 \dots \wedge C_k\ |\ \forall C, C_n = L_1\vee L_2 \vee L_3 \dots \vee L_k
+\Phi = C_1\wedge C_2\wedge C_3 \dots \wedge C_k\ |\ \forall C, C_n = L_1\vee L_2 \vee L_3 \dots \vee L_k
 \end{equation}
 
 As fórmulas proposicionais em DNF são representadas como uma 
@@ -259,31 +268,13 @@ diversas técnicas, neste trabalho será apresentada em detalhes
 uma delas.
 
 \begin{equation} \label{eq:DNF}
-\phi = D_1\vee D_2\vee D_3 \dots \vee D_k\ |\ \forall D, D_n = L_1\wedge L_2 \wedge L_3 \dots \wedge L_k
+\Phi = D_1\vee D_2\vee D_3 \dots \vee D_k\ |\ \forall D, D_n = L_1\wedge L_2 \wedge L_3 \dots \wedge L_k
 \end{equation}
 
 Estes conceitos são importantes pois o problema SAT é amplamente relacionada com uma sub-classe de 
 fórmulas proposicionais. 
 
 \subsection{Definição do Problema}
-
-Proposição é uma sentença a qual pode ser atribuído um sentido, 
-chamado de asserção. Uma proposições podem ser simples ou compostas. Neste 
-trabalho utilizaremos proposições lógicas, cujas asserções são 
-Verdadeiro ou Falso. Proposições lógicas simples correspondem a 
-variáveis. Proposições complexas são 
-proposições simples conectadas por operadores lógicos. Quando 
-existem variáveis sem valor atribuído uma proposição chama-se 
-de fórmula proposicional, representada neste trabalho por $\Phi$.
-
-Fórmulas proposicionais são escritas utilizando operadores lógicos,
-que são símbolo utilizado para se trabalhar com sentenças lógicas. 
-Estes operadores possuem caráter binário, sendo usados para conectar 
-duas sentenças lógicas, e caráter unário, para atribuir uma propriedade 
-a uma sentença lógica. Para este trabalho notam-se os operadores 
-\textit{AND} representado por $\wedge$, \textit{OR} representado 
-por $\vee$ e \textit{NOT} representado por $\neg$. As interpretações 
-destes operadores são descritos na tabela \ref{tab:a}.
 
 O problema SAT é definido sobre uma linguagem de lógica proposicional $\mathcal{L}(P)$, 
 onde P = {$p_1,p_2,\dots,p_n$} sendo que todo p é um símbolo proposicional sem 
