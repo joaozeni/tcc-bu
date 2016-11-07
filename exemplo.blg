@@ -24,45 +24,45 @@ Warning--campo year vazio ou faltando em Rau2003
 | Em caso de dúvidas ou problemas com este estilo procure |
 | http://abntex.codigolivre.org.br                        |
 +---------------------------------------------------------+
-You've used 38 entries,
+You've used 40 entries,
             6480 wiz_defined-function locations,
-            1427 strings with 16088 characters,
-and the built_in function-call counts, 31664 in all, are:
-= -- 2664
-> -- 1178
-< -- 45
-+ -- 493
-- -- 355
-* -- 2334
-:= -- 4168
-add.period$ -- 163
-call.type$ -- 40
-change.case$ -- 394
+            1450 strings with 16960 characters,
+and the built_in function-call counts, 33406 in all, are:
+= -- 2827
+> -- 1214
+< -- 43
++ -- 506
+- -- 367
+* -- 2461
+:= -- 4398
+add.period$ -- 177
+call.type$ -- 42
+change.case$ -- 411
 chr.to.int$ -- 70
-cite$ -- 35
-duplicate$ -- 1465
-empty$ -- 2393
-format.name$ -- 1684
-if$ -- 7673
-int.to.chr$ -- 4
+cite$ -- 37
+duplicate$ -- 1540
+empty$ -- 2574
+format.name$ -- 1745
+if$ -- 8115
+int.to.chr$ -- 3
 int.to.str$ -- 0
-missing$ -- 665
-newline$ -- 192
-num.names$ -- 170
-pop$ -- 800
+missing$ -- 700
+newline$ -- 199
+num.names$ -- 180
+pop$ -- 841
 preamble$ -- 1
-purify$ -- 154
+purify$ -- 161
 quote$ -- 0
-skip$ -- 1778
+skip$ -- 1866
 stack$ -- 1
-substring$ -- 1098
-swap$ -- 765
-text.length$ -- 33
+substring$ -- 1193
+swap$ -- 797
+text.length$ -- 32
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 14
+type$ -- 17
 warning$ -- 1
-while$ -- 248
+while$ -- 267
 width$ -- 0
-write$ -- 586
+write$ -- 620
 (There were 2 warnings)
