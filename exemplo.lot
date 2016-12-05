@@ -1,5 +1,5 @@
 \select@language {brazil}
 \contentsline {table}{\numberline {1}{\ignorespaces Tabela l\'ogica}}{24}
 \contentsline {table}{\numberline {2}{\ignorespaces Taxonomia de Flynn}}{33}
-\contentsline {table}{\numberline {3}{\ignorespaces Resultados para Glucose e ParaQuantumSAT}}{48}
-\contentsline {table}{\numberline {4}{\ignorespaces Tabele de resultados de escalabilidade}}{49}
+\contentsline {table}{\numberline {3}{\ignorespaces Resultados para Glucose e ParaQuantumSAT(multi-core)}}{50}
+\contentsline {table}{\numberline {4}{\ignorespaces Tabele de resultados de escalabilidade(cloud)}}{51}

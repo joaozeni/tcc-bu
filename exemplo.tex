@@ -58,13 +58,15 @@ curso ao longo dos anos de faculdade.
 Gostaria de agradeçer aos meus colegas de labóratório pelas discuções e pela ajuda em desenvolver o 
 conhecimento ao longo do curso. Gostaria de agradeçer especialmente aos colegas do IATE pela ajuda neste 
 trabalho, tanto na parte de computação quanto no desenvolvimento do texto.
+Gostaria de agradeçer ao prof. Marcio Castro e a Setic por me disponibilizarem uma máquina para realizar 
+os testes do trabalho.
 Por fim gostaria de agradeçer aos meus orientadores, profa. Jerusa Marchi e prof. Mario Dantas, pelo 
 apoio no desenvolvimento deste trabalho e os valiosos conselhos para o trabalho.}
 
 \epigrafe{Texto da Epígrafe. Citação relativa ao tema do trabalho. É opcional. A epígrafe pode também aparecer na abertura de cada seção ou capítulo.}
 {(Autor da epígrafe, ano)}
 
-\textoResumo {Q problema SAT é um problema classico e bem conhecido, sendo o primeiro provado ser NP-completo
+\textoResumo {Q problema SAT é um problema clássico e bem conhecido, sendo o primeiro provado ser NP-completo
 . Por sua importância, já que diversos problemas igualmente NP-completo podem ser solucionados via 
 redução ao problema SAT, o estudo de técnicas e algoritmos para a sua solução é sempre um tema atual de 
 pesquisa. Uma forma de buscar acelerar a obtenção da solução é através de paralelismo. Computação paralela 
@@ -233,7 +235,7 @@ conectores lógicos, a um proposição pode ser atribuído um sentido, chamado de as
 lógicos compões proposições através da ligação de variáveis e literais, 
 para este trabalho notam-se os conectores \textit{AND} representado por $\wedge$, \textit{OR} 
 representado por $\vee$ e \textit{NOT} representado por $\neg$. A semântica destes operadores 
-é descrita na tabela \ref{tab:a}. Outra estrutura são literais, que são variáveis que podem assumir 
+é descrita na Tabela \ref{tab:a}. Outra estrutura são literais, que são variáveis que podem assumir 
 valores verdade. Fórmulas proposicionais são escritas utilizando conectores lógicos, símbolos proposicionais 
 e literais e são utilizado para se trabalhar com sentenças lógicas. Neste trabalho fórmulas proposicionais 
 serão representados pelo símbolo $\Phi$.
@@ -269,7 +271,7 @@ forma normal disjuntiva (DNF, sigla em inglês).
 As fórmulas proposicionais em CNF são representadas como uma 
 conjunção de cláusulas, sendo cada cláusula uma disjunção de literais, 
 onde cada literal pode assumir Verdade ou Falso, 
-como é apresentado abaixo na equação \ref{eq:CNF}. Toda fórmula proposicional pode ser 
+como é apresentado abaixo na Equação \ref{eq:CNF}. Toda fórmula proposicional pode ser 
 convertida para forma CNF através de um procedimento trivial. 
 
 \begin{equation} \label{eq:CNF}
@@ -278,7 +280,7 @@ convertida para forma CNF através de um procedimento trivial.
 
 As fórmulas proposicionais em DNF são representadas como uma 
 disjunção de cláusulas, sendo cada cláusula um conjunção de literais, 
-como é apresentado abaixo na equação \ref{eq:DNF}. A conversão de uma fórmula proposicional 
+como é apresentado abaixo na Equação \ref{eq:DNF}. A conversão de uma fórmula proposicional 
 para forma DNF é por si só uma solução para o problema SAT, portanto 
 uma tarefa NP-Completa. Para realizar esta conversão existem 
 diversas técnicas, neste trabalho será apresentada em detalhes 
@@ -389,19 +391,19 @@ destacam-se aqui as heurísticas para a escolha do literal a se atribuir o
 valor verdade \cite{Ouyang1996}. No caso do CDCL, é montada uma estrutura adicional 
 que o permite ignorar alguns passos, para em teorias geradas aleatoriamente 
 baixar o tempo médio de execução \cite{Silva1997}. O funcionamento básico do 
-CDCL é mostrado na figura \ref{fig:CDCL}.
+CDCL é mostrado na Figura \ref{fig:CDCL}.
 
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.6\textwidth]{figuras/DPLL.jpg}
-    \caption{Arvore de decisão do DPLL}
+    \caption{Arvore de decisão do DPLL\cite{Katajainen}}
     \label{fig:DPLL}
 \end{figure}
 
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.6\textwidth]{figuras/CDCL.jpg}
-    \caption{Diagrama que apresenta os procedimentos e componentes do CDCL}
+    \caption{Diagrama que apresenta os procedimentos e componentes do CDCL\cite{Davis1962}}
     \label{fig:CDCL}
 \end{figure}
 
@@ -433,10 +435,9 @@ e para sua negação.
 \end{algorithm}
 
 Uma implementação do algoritmo CDCL é o \textit{solver} MiniSAT\allowbreak \cite{Een03anextensible}.
-Este \textit{solver} implementa várias otimizações que resultam 
-em melhorias significativas em casos médios. Vale destacar 
-a técnica de minimização de cláusulas conflitantes, pois 
-em exemplos indústrias é bastante comum que, mais de 30\% 
+Este \textit{solver} implementa várias otimizações que resultam em melhorias significativas em casos 
+médios. Vale destacar a técnica de minimização de cláusulas conflitantes, que marca as cláusulas 
+conflitantes para não visitalas, pois em exemplos indústrias é bastante comum que, mais de 30\% 
 dos literais em uma cláusula conflitante, sejam redundantes \cite{MiniSatSystemDesc}.
 
 Já os algoritmos baseados em busca local estocástica consistem em atribuir 
@@ -668,7 +669,7 @@ processos em paralelo, indo desde o paralelismo em nível de instrução \cite{Rau2
 até \textit{clusters} de diversos computadores independentes \cite{Coulouris2011}.
 
 Do ponto de vista da arquitetura de computação paralela existem diversas classificações. 
-Uma delas é a taxonomia de Flynn \cite{Flynn1972}, apresentada na tabela \ref{tab:flynn}, 
+Uma delas é a taxonomia de Flynn \cite{Flynn1972}, apresentada na Tabela \ref{tab:flynn}, 
 que divide as arquiteturas paralelas em relação aos seus dados e processos, hoje grande parte 
 dos sistemas são MIMD. 
 
@@ -728,7 +729,7 @@ diversas versões do \textit{SAT solver} ou diversos \textit{SAT solvers} com dif
 características, sendo que em cada nó deve rodar um \textit{solver} otimizado para um 
 problema diferente assim obtendo uma performance média melhor. Esta técnica pode ser 
 denominada como completiva \cite{RicardoSousaMarques2013}. Esse funcionamento é representando 
-na figura \ref{fig:port}.
+na Figura \ref{fig:port}.
 
 \begin{figure}[H]
     \centering
@@ -805,7 +806,7 @@ em \textit{SAT solvers} paralelos, que é o particionamento do espaço de busca, a
 dividindo as cláusulas em diversos nós, neste \textit{solver} o usuário pode configurar 
 a heurística para divisão do espaço de busca. Além disto ele também utiliza heurísticas para 
 cooperação entre nós através do compartilhamento das cláusulas aprendidas e dos conflitos.
-Este \textit{solver} foi desenvolvido em C++ e MPI e sua arquitetura é apresentada na figura \ref{fig:PMSat}.
+Este \textit{solver} foi desenvolvido em C++ e MPI e sua arquitetura é apresentada na Figura \ref{fig:PMSat}.
 
 \begin{figure}[H]
     \centering
@@ -815,10 +816,10 @@ Este \textit{solver} foi desenvolvido em C++ e MPI e sua arquitetura é apresenta
 \end{figure}
 
 Como pode-se ver nas implementações apresentadas esta técnica apresenta vários desafios. O 
-balanço de carga é um problema complexo em toda a área de computação paralela, neste contexto 
+balanceamento de carga é um problema complexo em toda a área de computação paralela, neste contexto 
 a solução esta na divisão do espaço de busca em um grande número de espaços, e dinamicamente 
 se distribuir as tarefas a medida que os escravos ficam inativos. Outro problema existe em sistemas 
-conectados através de uma rede, onde pode existir uma corrida pelos recursos da rede, este problema 
+distribuídos, onde pode existir uma corrida pelos recursos da rede, este problema 
 pode ser mitigado utilizando redes com uma maior banda. Em sistemas de memória compartilhada 
 pode-se estourar a memória quando são criados muitos subespaços de busca, isto é mitigado adicionando 
 mais memória ao sistema.
@@ -857,26 +858,6 @@ descritas as tecnologias utilizadas durante o desenvolvimento do trabalho, seu
 funcionamento e a motivação de sua escolha. Além disso também será apresentado o ambiente 
 e metodologia de testes.
 
-\section{Modelo e Ambiente de Programação}
-
-Nesta implementação escolheu-se como linguagem de programação o Erlang, esta decisão resulta 
-em um grande impacto nos resultados do trabalho.
-
-Erlang apresenta como característica maior a sua grande utilização em sistemas distribuídos, 
-principalmente sistemas que lidam com um grande um número de chamadas e necessitam grande confiabilidade, 
-porém também apresenta alguns usos tem cenários de computação científica \cite{Bingham2010}. Está linguagem 
-apresenta como principal vantagem um grande número de ferramenta para computação distribuída, sendo 
-estas ferramentas bastante estáveis e eficientes. Outra vantagem é o fato de Erlang ser uma linguagem 
-funcional, este paradigma é bastante eficiente para computação distribuída pois faz com que o código 
-apresente poucas condições de corrida e não utilize variáveis compartilhadas \cite{Cronqvist2004}. Erlang 
-também permite facilmente se integrar com outras linguagens de programação mais eficientes em outras tarefas.
-
-Também foi utilizada a tecnologia de \textit{cloud computing}, neste trabalho foi utilizada a 
-\textit{cloud} da Amazon. Esta tecnologia permite a criação de virtualmente infinitas máquinas 
-virtuais, sendo possível assim fazer testes sobre a escalabilidade do sistema. Esta tecnologia 
-também permite a criação de máquinas virtuais com as características desejadas para a pesquisa, neste 
-caso diversas máquinas com apenas um core.
-
 \section{Implementação Paralela do Algoritmo QuantumSAT}
 
 Como dito anteriormente o algoritmo base realiza uma busca em um espaço de estados. Esta busca 
@@ -889,7 +870,7 @@ profundidade(DFS, sigla em inglês). A busca em largura funciona partindo de uma 
 os seus vértices. A busca em profundidade funciona partindo de uma raiz e explorando cada ramo do espaço 
 até que seja encontrado um nó folha, quando este é encontrado é realizado o \textit{backtracking}.
 
-Ambas as buscas pode ser exaustivas, assim visitando todos os nós possíveis, ou parar quando a primeira 
+Ambas as buscas podem ser exaustivas, assim visitando todos os nós possíveis, ou parar quando a primeira 
 solução é encontrada. Sendo assim a implementação pode resolver tanto o problema SAT quanto suas 
 extensões, como o UNIQUE-SAT, onde o problema tem apenas uma solução. Para maioria dos casos é melhor 
 parar na primeira solução encontrada, pois assim o algoritmo é mais rápido e raramente o tamanho da 
@@ -986,10 +967,63 @@ a forma com que a busca é realizada faz com que sejam explorados mais estados an
 ser encontrada, na média das buscas.
 
 A busca em profundidade apresentou as vantagens de possuir menos comunicação entre os nós e de encontrar 
-a primeira solução explorando menos estados. Porém apresenta um balanço de carga entre os nós pior, esse 
-cenário pode ser agravado se os nós apresentarem diferenças de performance.
+a primeira solução explorando menos estados. Porém apresenta um balanceamento de carga entre os nós pior, 
+esse cenário pode ser agravado se os nós apresentarem diferenças de performance.
 
-\section{exemplo}
+\section{Modelo e Ambiente de Programação}
+
+Nesta implementação escolheu-se como linguagem de programação o Erlang, esta decisão resulta 
+em um grande impacto nos resultados do trabalho.
+
+Erlang apresenta como característica maior a sua grande utilização em sistemas distribuídos, 
+principalmente sistemas que lidam com um grande um número de chamadas e necessitam grande confiabilidade, 
+porém também apresenta alguns usos tem cenários de computação científica \cite{Bingham2010}. Está linguagem 
+apresenta como principal vantagem um grande número de ferramenta para computação distribuída, sendo 
+estas ferramentas bastante estáveis e eficientes. Outra vantagem é o fato de Erlang ser uma linguagem 
+funcional, este paradigma é bastante eficiente para computação distribuída pois faz com que o código 
+apresente poucas condições de corrida e não utilize variáveis compartilhadas \cite{Cronqvist2004}. Erlang 
+também permite facilmente se integrar com outras linguagens de programação mais eficientes em outras tarefas.
+
+Também foi utilizada a tecnologia de \textit{cloud computing}, neste trabalho foi utilizada a 
+\textit{cloud} da Amazon. Esta tecnologia permite a criação de virtualmente infinitas máquinas 
+virtuais, sendo possível assim fazer testes sobre a escalabilidade do sistema. Esta tecnologia 
+também permite a criação de máquinas virtuais com as características desejadas para a pesquisa, neste 
+caso diversas máquinas com apenas um core.
+
+\section{Implementação em Erlang}
+
+Para o desenvolvimento deste trabalho foi selecionada a linguagem Erlang, a escolha desta linguagem 
+implicou em um série de descisões de projeto e características da implementação. Estes fatores serão 
+apresentados e discutidos nesta seção.
+
+A primeira característica são os \textit{behaviours}, que são comportamentos de diversos tipos de aplicação 
+em Erlang, eles definem as chamadas que um dado processo deve aceitar para ser compativel com aquele 
+comportamento, diversas ferramentas do Erlang utilizam esse comportamentos. A implementação pode ser divida 
+em duas partes, uma que coordena o sistema chamada pqsat e uma que que executa a busca nos nós distribuidos 
+chamada search\_tool. Ambas as partes implementam os \textit{behaviours server} e \textit{supervisor}, além 
+disso o pqsat também implementa o \textit{behaviour application}. O \textit{behaviour server} implementa as 
+chamadas para uma relação cliente-servidor, sendo utilizada para distribuir as tarefas em diversos nós. O 
+\textit{behaviour supervisor} implementa as chamadas utilizadas pelo Erlang para monitorar os processos no 
+sistema e como o Erlang deve proceder em caso de morte de um processo. 
+
+A segunda característica foi o modelo de programação da linguagem, no caso de Erlang o modelo 
+funcional. Este modelo de programação apresenta diversas vantagens, como o fato de funções puras 
+não utilizarem váriaveis. Porém também apresentou diversos desafios, como a implementação da busca.
+O algoritmos original possui implementações em três linguagens, C++, Java e LISP. Como LISP também 
+é uma linguagens funcional essa implementação foi utilizada como base foi utilizada como base, porém 
+também foi utilizada a implementação em C++, pois esta estava mais clara.
+
+O pqsat implementa a função \textit{solve}, esta função é responsável por ler os arquivos de entrada, criar 
+um quanta inicial, fazer o spin inicial, resolver o conjunto de inicio, distribuir a busca e receber as 
+respostas. As funções utilizadas para isto são a \textit{calculate\_spin}, \textit{make\_start\_set}, 
+\textit{quantum\_maker} e \textit{slave:start}.
+
+A search\_tool implementa a função \textit{search}, que é a implementação das busca descrita anteriormente. 
+Para isso são utilizadas a funções \textit{get\_successors}, que cria a lista de estados sucessores baseado 
+na função de qualidade, a função \textit{make\_states}, que cria os estados a serem expandidas localmente e 
+a função \textit{is\_final}, que verifica se um dado estado é final.
+
+\section{Exemplo}
 
 Neste exemplo utilizaremos dois nós e a pré-execução em paralelo com apenas um nível na arvore. Este 
 exemplo funciona para demostrar a lógica de funcionamento paralelo do algoritmo, porém a implementação 
@@ -1026,7 +1060,6 @@ acabará antes e então pegará o estado com omega: [-2] e assim por diante. Lembra
 serve para exemplificar o funcionamento do algoritmo por isso está buscando todas as soluções, a 
 execução real para assim que a primeira solução é encontrada e caso o nó não encontre solução ele 
 simplesmente retorna {}.
-
 
 Para demonstrar o funcionamento paralelo do algoritmo também é importante conhecer o funcionamento do
 \textit{state pool}, a figura a seguir apresenta os três primeiros estados da \textit{state pool}.
@@ -1076,21 +1109,21 @@ conhecidas todas as características, porém não conseguimos acesso a um cluster c
 a cloud se mostrou uma boa alternativa. Para estes teste foram criadas máquinas virtuais single core, 
 sendo criados os nós para execução da busca e um nó para integração e distribuição de tarefas.
 
-Para o cenário multi-core foram utilizadas duas máquinas. A primeira é possui um core i7-4790 com 
-16Gb de mémoria ram, utilizando o sistema operacional Linux(distribuição Ubuntu). Estas máquinas forma 
-utilizadas para testar uma comparação entre o \textit{SAT solver} implementado e o Glucose, pois este 
-apresenta boa facilidade de uso e um bom desempenho, além disso também foram utilizadas para testes de 
-decisão do modelo de busca a ser utilizado. A principal vantagem de se usar máquinas multi-core 
-está no fato de ser fácil de executar os SAT solvers. Ambas as máquinas rodaram os testes sendo 
-acessadas por SSH e rodando a versão mais leve do sistema operacional, assim reduzindo o impacto da 
-execução do sistema nos testes.
+Para o cenário multi-core foram utilizadas duas máquinas. A primeira possui um core i7-4790 com 
+16Gb de mémoria ram, a segunda possui um Xeon E31240 com 16Gb de mémoria ram, ambos utilizam o sistema 
+operacional Linux(distribuição Ubuntu). Estas máquinas forma utilizadas para testar uma comparação entre 
+o \textit{SAT solver} implementado e o Glucose, pois este apresenta boa facilidade de uso e um bom 
+desempenho, além disso também foram utilizadas para testes de decisão do modelo de busca a ser utilizado. 
+A principal vantagem de se usar máquinas multi-core está no fato de ser fácil de executar os SAT solvers. 
+Ambas as máquinas rodaram os testes sendo acessadas por SSH e rodando a versão mais leve do sistema 
+operacional, assim reduzindo o impacto da execução do sistema nos testes.
 
 Para facilitar, padronizar e ter uma execução mais rápida dos testes foram utilizados os testes disponíveis 
 na SATLIB(http://www.cs.ubc.ca/~hoos/SATLIB/benchm.html), utilizando os testes 3-SAT randômicos uniformes 
 indo de 20 variáveis a 250 variáveis e indo de 91 clausulas a 1065 clausulas, sendo que utilizei a 
-média de 100 instancias. Também foram utilizados alguns testes da SAT competition para um maior 
-volume de variáveis e cláusulas, porém como foram utilizadas menos instancias o seu valor 
-estatístico fica comprometido.
+média de 100 instancias, sendo cada instancia um problema diferente porém de mesma classe. Também foram 
+utilizados alguns testes da SAT competition para um maior volume de variáveis e cláusulas, porém como foram 
+utilizadas menos instancias o seu valor estatístico fica comprometido.
 
 \section{Resultados e Análise de tempo}
 
@@ -1119,13 +1152,13 @@ abaixo, onde os dados estão apresentados em segundos.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{figuras/results_compare.png}
-    \caption{Comparação com o glucose}
+    \caption{Comparação com o glucose(multi-core)}
     \label{fig:port}
 \end{figure}
 
 \begin{table}[!htb]
 \centering
-\caption{Resultados para Glucose e ParaQuantumSAT}
+\caption{Resultados para Glucose e ParaQuantumSAT(multi-core)}
 \label{my-label}
 \begin{tabular}{|l|l|l|l|l|l|l|l|l|}
 \hline
@@ -1159,8 +1192,8 @@ uf250    & 0.428    & 0.396    & 0.318    & 0.278    \\ \hline
 \section{Resultados e Análise de escalabilidade}
 
 Sendo está característica bastante importante em sistemas distribuídos este resultado é bastante importante.
-Esta implementação apresentou um bom resultado com relação a escalabilidade, sendo testado com um grande 
-volume de nós e escalando bem com a adição de nós. Também é claro que com o aumento do tamanho dos 
+Esta implementação apresentou um resultado satisfatório com relação a escalabilidade, sendo testado com 
+um grande volume de nós e escalando bem com a adição de nós. Também é claro que com o aumento do tamanho dos 
 problemas a eficiência da execução em paralelo aumenta, isso se deve a uma diminuição relativa do 
 \textit{overhead} causado pela comunicação e outras características paralelas em relação ao tempo 
 de execução. Os resultados são apresentados na tabela e no gráfico abaixo, onde os dados estão 
@@ -1169,13 +1202,13 @@ apresentados em segundos.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{figuras/results_paraq.png}
-    \caption{Teste de escalabilidade}
+    \caption{Teste de escalabilidade(cloud)}
     \label{fig:port}
 \end{figure}
 
 \begin{table}[!htb]
 \centering
-\caption{Tabele de resultados de escalabilidade}
+  \caption{Tabele de resultados de escalabilidade(cloud)}
 \label{my-label}
 \begin{tabular}{|l|l|l|l|l|l|l|}
 \hline
@@ -1201,7 +1234,11 @@ em torno de 50\% maior que com apenas um nó, um resultado bastante positivo em s
 problema NP-completo. Tambem podemos ver que com o dobro de nós temos um ganho de desempenho de em 
 média 16\%, também bastante positivo dado a classe do problema.
 
-\section{Resultados e Análise de uso dos Nós}
+Como para esse teste é avaliado o tempo para encontrar a primeira solução a adição de nós não 
+apresenta o ganho máximo possível. Sendo assim é bastante difícil de apresentar grandes ganhos 
+de escalabilidade na paralelização do problema SAT.
+
+\section{Resultados e Análise de eficiência}
 
 Este teste é bastante interessante para se analisar a distribuição de carga do sistema, uma vez que é 
 desejável a maior utilização possível da capacidade computacional do sistema. Isto é desejável pois 
@@ -1219,6 +1256,11 @@ além do nó 1.
     \caption{Teste de escalabilidade}
     \label{fig:port}
 \end{figure}
+
+Este resultado é bom de quesito de utilização dos nós, mas devido a solução do problema por se encontrar em 
+qualquer lugar da árvore um maior uso de CPU não necessariamente apresenta um ganho proporcional de 
+desempenho. Isso deve que mesmo processando informação caso a informação processada não seja uma solução 
+esse processamento não é utilizada para nada, além de saber que esta informação é inútil.
 
 \section{Considerações Sobre o Capítulo}
 

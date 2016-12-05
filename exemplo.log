@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.14)  7 NOV 2016 03:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.14)  5 DEC 2016 03:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -410,19 +410,19 @@ LaTeX Warning: Label `fig:port' multiply defined.
 )
 \openout1 = `exemplo.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 91.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 93.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
@@ -521,39 +521,39 @@ e
 ))
 \c@lstlisting=\count135
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 95.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 97.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 95.
-LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 95
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 97.
+LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 97
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 95
+LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 97
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 95
+LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 97
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 95
+LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 97
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 95.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 97.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 95.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 97.
 
-Overfull \hbox (6.73486pt too wide) in paragraph at lines 95--95
+Overfull \hbox (6.73486pt too wide) in paragraph at lines 97--97
 []\OT1/ptm/m/n/9 Monografia sub-me-tido ao Curso de Ci[]encias
  []
 
@@ -561,12 +561,12 @@ Overfull \hbox (6.73486pt too wide) in paragraph at lines 95--95
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 95--95
+Underfull \hbox (badness 10000) in paragraph at lines 97--97
 
  []
 
 
-Overfull \hbox (2.5pt too wide) in paragraph at lines 95--97
+Overfull \hbox (2.5pt too wide) in paragraph at lines 97--99
 []
  []
 
@@ -577,7 +577,7 @@ Overfull \hbox (2.5pt too wide) in paragraph at lines 95--97
 ] [5] [6
 
 ]
-Overfull \hbox (0.61748pt too wide) in paragraph at lines 99--99
+Overfull \hbox (0.61748pt too wide) in paragraph at lines 101--101
 \OT1/ptm/m/n/9 apa-re-cer na aber-tura de cada se[][]ao ou cap[]^^Ptulo. 
  []
 
@@ -605,12 +605,12 @@ Overfull \hbox (0.61748pt too wide) in paragraph at lines 99--99
 [16
 
 ] (./exemplo.toc
-Overfull \hbox (1.97682pt too wide) in paragraph at lines 22--22
+Overfull \hbox (1.97682pt too wide) in paragraph at lines 21--21
  [][] []\OT1/ptm/m/n/10 IMPLEMENTA[][]AO PA-RA-LELA DO AL-GO-RITMO QUAN- 
  []
 
 
-Overfull \hbox (3.92534pt too wide) in paragraph at lines 26--26
+Overfull \hbox (3.92534pt too wide) in paragraph at lines 27--27
  [][] []\OT1/ptm/b/n/10 AMBIENTE DE TES-TES E RE-SUL-TA-DOS EX-PE-RI-MEN- 
  []
 
@@ -623,13 +623,13 @@ Overfull \hbox (3.92534pt too wide) in paragraph at lines 26--26
 ]
 Cap\'{\i }tulo 1.
 
-Overfull \hbox (11.75685pt too wide) in paragraph at lines 112--120
+Overfull \hbox (11.75685pt too wide) in paragraph at lines 114--122
 \OT1/ptm/m/it/10 things(IoT)\OT1/ptm/m/n/10 , onde di-ver-sos dis-po-si-ti-vos 
 in-te-li-gen-tes se co-mu-ni-cam(BUSEMANN
  []
 
 
-Overfull \hbox (0.157pt too wide) in paragraph at lines 121--128
+Overfull \hbox (0.157pt too wide) in paragraph at lines 123--130
 \OT1/ptm/m/n/10 se al-go-rit-mos para a solu[][]ao do pro-blema de sa-tis-fa-zi
 -bi-li-dade bo-o-le-ana (SAT).
  []
@@ -641,7 +641,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 ]
 [20]
-Overfull \hbox (5.79016pt too wide) in paragraph at lines 198--201
+Overfull \hbox (5.79016pt too wide) in paragraph at lines 200--203
 []\OT1/ptm/m/n/10 No cap[]^^Ptulo tr[]es apre-senta o de-sen-vol-vi-mento do tr
 a-ba-lho, neste cap[]^^Ptulo
  []
@@ -654,7 +654,7 @@ Cap\'{\i }tulo 2.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [23]
-Overfull \hbox (14.12718pt too wide) in paragraph at lines 264--268
+Overfull \hbox (14.12718pt too wide) in paragraph at lines 266--270
 \OT1/ptm/m/n/10 por[]em toda f[]ormula pro-po-si-ci-o-nal pode ser re-pre-senta
  nas duas for-mas can[]onicas,
  []
@@ -666,7 +666,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [26]
-Overfull \hbox (5.13623pt too wide) in paragraph at lines 382--393
+Overfull \hbox (5.13623pt too wide) in paragraph at lines 384--395
 \OT1/ptm/m/n/10 heur[]^^Psticas para me-lhor efici[]encia do al-go-ritmo, desta
 cam-se aqui as heur[]^^Psticas
  []
@@ -674,35 +674,35 @@ cam-se aqui as heur[]^^Psticas
 <figuras/DPLL.jpg, id=94, 635.37375pt x 517.935pt>
 File: figuras/DPLL.jpg Graphic file (type jpg)
  <use figuras/DPLL.jpg>
-Package pdftex.def Info: figuras/DPLL.jpg used on input line 396.
+Package pdftex.def Info: figuras/DPLL.jpg used on input line 398.
 (pdftex.def)             Requested size: 184.37573pt x 150.29213pt.
 
 <figuras/CDCL.jpg, id=95, 595.22375pt x 457.71pt>
 File: figuras/CDCL.jpg Graphic file (type jpg)
  <use figuras/CDCL.jpg>
-Package pdftex.def Info: figuras/CDCL.jpg used on input line 403.
+Package pdftex.def Info: figuras/CDCL.jpg used on input line 405.
 (pdftex.def)             Requested size: 184.37573pt x 141.77689pt.
 
-[27 <./figuras/DPLL.jpg>]
-Overfull \hbox (9.48666pt too wide) in paragraph at lines 442--452
+[27 <./figuras/DPLL.jpg>] [28 <./figuras/CDCL.jpg>]
+Overfull \hbox (9.48666pt too wide) in paragraph at lines 443--453
 \OT1/ptm/m/n/10 eli-mi-nam o maior n[]umero de cl[]ausulas. Pos-suem di-ver-sas
  for-mas de otimiza[][]ao,
  []
 
-[28 <./figuras/CDCL.jpg>]
-Overfull \hbox (4.58792pt too wide) in paragraph at lines 492--503
+
+Overfull \hbox (4.58792pt too wide) in paragraph at lines 493--504
 \OT1/ptm/m/n/10 classe di-fe-rente, que []e ba-se-ada na con-vers[]ao CNF-DNF. 
 Uma vez que a solu[][]ao
  []
 
 
-Overfull \hbox (10.43721pt too wide) in paragraph at lines 492--503
+Overfull \hbox (10.43721pt too wide) in paragraph at lines 493--504
 \OT1/ptm/m/n/10 por[]em esta solu[][]ao []e ex-tre-ma-mente ine-fi-ci-ente (MIL
 -TER-SEN; RADHA-KRISH-
  []
 
 [29]
-Overfull \hbox (43.3794pt too wide) in paragraph at lines 509--513
+Overfull \hbox (43.3794pt too wide) in paragraph at lines 510--514
 []\OT1/ptm/m/n/10 Ser[]a uti-li-zado como base o al-go-ritmo \OT1/ptm/m/it/10 S
 AT sol-ver \OT1/ptm/m/n/10 Quan-tum-SAT(BITTENCOURT;
  []
@@ -711,23 +711,23 @@ AT sol-ver \OT1/ptm/m/n/10 Quan-tum-SAT(BITTENCOURT;
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [30]
-Overfull \hbox (3.82019pt too wide) in paragraph at lines 577--581
+Overfull \hbox (3.82019pt too wide) in paragraph at lines 578--582
 []\OT1/ptm/m/n/10 Para re-a-li-zar esta busca []e uti-li-zado um al-go-ritmo do
  tipo A*(RUSSELL;
  []
 
 [31]
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 612.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 613.
 
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 612.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 613.
  [32]
 Cap\'{\i }tulo 3.
 
-Overfull \hbox (8.44041pt too wide) in paragraph at lines 697--704
+Overfull \hbox (8.44041pt too wide) in paragraph at lines 698--705
 []\OT1/ptm/m/n/10 Existem di-ver-sos pa-ra-dig-mas de programa[][]ao pa-ra-lela
  (KU-MAR, 2002).
  []
@@ -735,17 +735,17 @@ Overfull \hbox (8.44041pt too wide) in paragraph at lines 697--704
 [33
 
 ]
-Overfull \hbox (4.2667pt too wide) in paragraph at lines 705--709
+Overfull \hbox (4.2667pt too wide) in paragraph at lines 706--710
 \OT1/ptm/m/n/10 troca de men-sa-gens e sem mem[]oria com-par-ti-lhada (COU-LOU-
 RIS et al., 2011).
  []
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 712.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 713.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 712.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 713.
 
-Overfull \hbox (7.06615pt too wide) in paragraph at lines 716--722
+Overfull \hbox (7.06615pt too wide) in paragraph at lines 717--723
 \OT1/ptm/m/n/10 pro-blema SAT de forma pa-ra-lela. Pri-mei-ra-mente []e apre-se
 nta a t[]ecnica portf[]olio,
  []
@@ -754,7 +754,7 @@ nta a t[]ecnica portf[]olio,
 File: figuras/portfolio.jpg Graphic file (type jpg)
 
 <use figuras/portfolio.jpg>
-Package pdftex.def Info: figuras/portfolio.jpg used on input line 735.
+Package pdftex.def Info: figuras/portfolio.jpg used on input line 736.
 (pdftex.def)             Requested size: 245.83275pt x 190.4921pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -763,7 +763,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 4792) has occurred while \output is active []
 
  [35 <./figuras/portfolio.jpg>]
-Overfull \hbox (17.09732pt too wide) in paragraph at lines 778--787
+Overfull \hbox (17.09732pt too wide) in paragraph at lines 779--788
 \OT1/ptm/m/n/10 de-las foi o PSatz (JUR-KOWIAK; LI; UTARD, 2005), esta foi uma 
 implementa[][]ao
  []
@@ -775,7 +775,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <figuras/PMSat.jpeg, id=130, 1995.455pt x 941.5175pt>
 File: figuras/PMSat.jpeg Graphic file (type jpg)
  <use figuras/PMSat.jpeg>
-Package pdftex.def Info: figuras/PMSat.jpeg used on input line 812.
+Package pdftex.def Info: figuras/PMSat.jpeg used on input line 813.
 (pdftex.def)             Requested size: 245.83275pt x 115.9798pt.
 
 [37 <./figuras/PMSat.jpeg>] [38]
@@ -790,13 +790,13 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: figuras/nodeDynamic.png Graphic file (type png)
 
 <use figuras/nodeDynamic.png>
-Package pdftex.def Info: figuras/nodeDynamic.png used on input line 965.
+Package pdftex.def Info: figuras/nodeDynamic.png used on input line 946.
 (pdftex.def)             Requested size: 245.83275pt x 306.78352pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [41]
-Overfull \hbox (14.75534pt too wide) in paragraph at lines 976--981
+ [41 <./figuras/nodeDynamic.png>]
+Overfull \hbox (14.75534pt too wide) in paragraph at lines 957--962
 \OT1/ptm/m/n/10 Realizaram-se os tes-tes uti-li-zando al-gu-mas inst[]ancias do
  pro-blema SAT aleat[]orias
  []
@@ -804,78 +804,100 @@ Overfull \hbox (14.75534pt too wide) in paragraph at lines 976--981
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [42 <./figuras/nodeDynamic.png>]
-Overfull \hbox (19.45929pt too wide) in paragraph at lines 1011--1014
-[]$\OML/ztmcm/m/it/10 P[]; \OMS/ztmcm/m/n/10 :\OML/ztmcm/m/it/10 P[]; P[]; \OMS
-/ztmcm/m/n/10 :\OML/ztmcm/m/it/10 P[];$ $P[]; \OMS/ztmcm/m/n/10 :\OML/ztmcm/m/i
-t/10 P[];$
+ [42]
+Overfull \hbox (6.99725pt too wide) in paragraph at lines 1009--1015
+\OT1/ptm/m/n/10 senta di-ver-sas van-ta-gens, como o fato de fun[][]oes pu-ras 
+n[]ao uti-li-za-rem v[]ariaveis.
+ []
+
+
+Overfull \hbox (1.49727pt too wide) in paragraph at lines 1009--1015
+\OT1/ptm/m/n/10 Por[]em tamb[]em apre-sen-tou di-ver-sos de-sa-fios, como a imp
+lementa[][]ao da busca.
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [43]
-Overfull \hbox (2.76839pt too wide) in paragraph at lines 1022--1029
+Overfull \hbox (3.78642pt too wide) in paragraph at lines 1021--1025
+\OT1/ptm/m/n/10 busca des-crita an-te-ri-or-mente. Para isso s[]ao uti-li-za-da
+s a fun[][]oes \OT1/ptm/m/it/10 get[]successors\OT1/ptm/m/n/10 ,
+ []
+
+
+Overfull \hbox (19.45929pt too wide) in paragraph at lines 1045--1048
+[]$\OML/ztmcm/m/it/10 P[]; \OMS/ztmcm/m/n/10 :\OML/ztmcm/m/it/10 P[]; P[]; \OMS
+/ztmcm/m/n/10 :\OML/ztmcm/m/it/10 P[];$ $P[]; \OMS/ztmcm/m/n/10 :\OML/ztmcm/m/i
+t/10 P[];$
+ []
+
+
+Overfull \hbox (2.76839pt too wide) in paragraph at lines 1056--1063
 \OT1/ptm/m/n/10 pan-dir[]a, as-sim re-tor-nando a solu[][]ao omega:[-1,4,2,3], 
 omega ..., o n[]o 2@comp
  []
 
-<figuras/threeStates.png, id=157, 595.22375pt x 183.68625pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [44]
+<figuras/threeStates.png, id=160, 595.22375pt x 183.68625pt>
 File: figuras/threeStates.png Graphic file (type png)
 
 <use figuras/threeStates.png>
-Package pdftex.def Info: figuras/threeStates.png used on input line 1036.
+Package pdftex.def Info: figuras/threeStates.png used on input line 1069.
 (pdftex.def)             Requested size: 245.83275pt x 75.86398pt.
- [44 <./figuras/threeStates.png>]
+ [45 <./figuras/threeStates.png>] [46
+
+]
 Cap\'{\i }tulo 5.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [45
-
-]
+ [47]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [46]
-<figuras/results_compare.png, id=168, 481.8pt x 361.35pt>
+ [48]
+<figuras/results_compare.png, id=174, 481.8pt x 361.35pt>
 File: figuras/results_compare.png Graphic file (type png)
 
 <use figuras/results_compare.png>
-Package pdftex.def Info: figuras/results_compare.png used on input line 1121.
+Package pdftex.def Info: figuras/results_compare.png used on input line 1154.
 (pdftex.def)             Requested size: 245.83275pt x 184.37428pt.
 
-<figuras/results_paraq.png, id=169, 481.8pt x 361.35pt>
+<figuras/results_paraq.png, id=175, 481.8pt x 361.35pt>
 File: figuras/results_paraq.png Graphic file (type png)
 
 <use figuras/results_paraq.png>
-Package pdftex.def Info: figuras/results_paraq.png used on input line 1171.
+Package pdftex.def Info: figuras/results_paraq.png used on input line 1204.
 (pdftex.def)             Requested size: 245.83275pt x 184.37428pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [47 <./figuras/results_compare.png (PNG copy)>]
+ [49 <./figuras/results_compare.png (PNG copy)>]
 Overfull \vbox (44.6006pt too high) has occurred while \output is active []
 
 
-[48 <./figuras/results_paraq.png (PNG copy)>]
-Overfull \hbox (7.26999pt too wide) in paragraph at lines 1180--1197
+[50 <./figuras/results_paraq.png (PNG copy)>]
+Overfull \hbox (7.26999pt too wide) in paragraph at lines 1213--1230
  [][] 
  []
 
-<figuras/cpu_use.png, id=176, 1182.4175pt x 730.73pt>
+<figuras/cpu_use.png, id=184, 1182.4175pt x 730.73pt>
 File: figuras/cpu_use.png Graphic file (type png)
 
 <use figuras/cpu_use.png>
-Package pdftex.def Info: figuras/cpu_use.png used on input line 1218.
+Package pdftex.def Info: figuras/cpu_use.png used on input line 1255.
 (pdftex.def)             Requested size: 245.83275pt x 151.91911pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 1009) has occurred while \output is active []
 
- [49]
-[50 <./figuras/cpu_use.png>]
+ [51]
+[52 <./figuras/cpu_use.png>]
 Cap\'{\i }tulo 6.
 
-Overfull \hbox (22.90985pt too wide) in paragraph at lines 1246--1256
+Overfull \hbox (22.90985pt too wide) in paragraph at lines 1288--1298
 []\OT1/ptm/m/n/10 Neste tra-ba-lho foi poss[]^^Pvel com-pre-en-der as di-ver-sa
 s t[]ecnicas de computa[][]ao,
  []
@@ -883,31 +905,31 @@ s t[]ecnicas de computa[][]ao,
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [51
+ [53
 
 ]
-Overfull \hbox (14.19981pt too wide) in paragraph at lines 1273--1277
+Overfull \hbox (14.19981pt too wide) in paragraph at lines 1315--1319
 []\OT1/ptm/m/n/10 Tamb[]em []e poss[]^^Pvel re-a-li-zar al-guns es-tu-dos de me
 -lho-ria da implementa[][]ao.
  []
 
-(./exemplo.bbl [52] [53
+(./exemplo.bbl [54] [55
 
-] [54] [55])
+] [56] [57])
 +-------------------------------------------------------------------+
 | Comentario, sugestao ou critica sobre o abnTeX? Entre em contato: |
 |                  http://abntex.codigolivre.org.br                 |
 +-------------------------------------------------------------------+
-[56] (./exemplo.aux)
+[58] (./exemplo.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6297 strings out of 494929
- 91790 string characters out of 6180142
- 175623 words of memory out of 5000000
- 9372 multiletter control sequences out of 15000+600000
+ 6298 strings out of 494929
+ 91808 string characters out of 6180142
+ 176751 words of memory out of 5000000
+ 9373 multiletter control sequences out of 15000+600000
  35937 words of font info for 75 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
  39i,12n,43p,359b,329s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -922,10 +944,10 @@ re/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/
 utmri8a.pfb>
-Output written on exemplo.pdf (56 pages, 499091 bytes).
+Output written on exemplo.pdf (58 pages, 504379 bytes).
 PDF statistics:
- 244 PDF objects out of 1000 (max. 8388607)
- 161 compressed objects within 2 object streams
+ 250 PDF objects out of 1000 (max. 8388607)
+ 165 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

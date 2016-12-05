@@ -18,18 +18,19 @@
 \contentsline {subsection}{\numberline {3.2.2}Particionamento do espa\c co de busca}{36}
 \contentsline {subsection}{\numberline {3.2.3}Particionamento do problema}{38}
 \contentsline {chapter}{\numberline {4}\MakeUppercase {ParaQuantumSAT}}{39}
-\contentsline {section}{\numberline {4.1}Modelo e Ambiente de Programa\c c\~ao}{39}
-\contentsline {section}{\numberline {4.2}Implementa\c c\~ao Paralela do Algoritmo QuantumSAT}{39}
-\contentsline {section}{\numberline {4.3}Busca Paralela}{42}
-\contentsline {section}{\numberline {4.4}exemplo}{43}
-\contentsline {section}{\numberline {4.5}Considera\c c\~oes Sobre o Cap\IeC {\'\i }tulo}{44}
-\contentsline {chapter}{\numberline {5}\MakeUppercase {Ambiente de Testes e Resultados Experimentais}}{45}
-\contentsline {section}{\numberline {5.1}Ambientes de Teste}{45}
-\contentsline {section}{\numberline {5.2}Resultados e An\'alise de tempo}{46}
-\contentsline {section}{\numberline {5.3}Resultados e An\'alise de escalabilidade}{47}
-\contentsline {section}{\numberline {5.4}Resultados e An\'alise de uso dos N\'os}{49}
-\contentsline {section}{\numberline {5.5}Considera\c c\~oes Sobre o Cap\IeC {\'\i }tulo}{50}
-\contentsline {chapter}{\numberline {6}\MakeUppercase {Trabalhos Futuros e Conclus\~ao}}{51}
-\contentsline {section}{\numberline {6.1}Conclus\~ao}{51}
-\contentsline {section}{\numberline {6.2}Trabalhos Futuros}{51}
-\contentsline {chapter}{\hspace {\espacosumario }REFER\^ENCIAS}{53}
+\contentsline {section}{\numberline {4.1}Implementa\c c\~ao Paralela do Algoritmo QuantumSAT}{39}
+\contentsline {section}{\numberline {4.2}Busca Paralela}{42}
+\contentsline {section}{\numberline {4.3}Modelo e Ambiente de Programa\c c\~ao}{42}
+\contentsline {section}{\numberline {4.4}Implementa\c c\~ao em Erlang}{43}
+\contentsline {section}{\numberline {4.5}Exemplo}{44}
+\contentsline {section}{\numberline {4.6}Considera\c c\~oes Sobre o Cap\IeC {\'\i }tulo}{45}
+\contentsline {chapter}{\numberline {5}\MakeUppercase {Ambiente de Testes e Resultados Experimentais}}{47}
+\contentsline {section}{\numberline {5.1}Ambientes de Teste}{47}
+\contentsline {section}{\numberline {5.2}Resultados e An\'alise de tempo}{48}
+\contentsline {section}{\numberline {5.3}Resultados e An\'alise de escalabilidade}{49}
+\contentsline {section}{\numberline {5.4}Resultados e An\'alise de efici\^encia}{51}
+\contentsline {section}{\numberline {5.5}Considera\c c\~oes Sobre o Cap\IeC {\'\i }tulo}{52}
+\contentsline {chapter}{\numberline {6}\MakeUppercase {Trabalhos Futuros e Conclus\~ao}}{53}
+\contentsline {section}{\numberline {6.1}Conclus\~ao}{53}
+\contentsline {section}{\numberline {6.2}Trabalhos Futuros}{53}
+\contentsline {chapter}{\hspace {\espacosumario }REFER\^ENCIAS}{55}
