@@ -104,7 +104,7 @@ algorithm.}
 %\pretextuais % Substitui todos os elementos pre-textuais acima
 \listadefiguras % as listas dependem da necessidade do usuário
 \listadetabelas 
-%\listadeabreviaturas
+\listadeabreviaturas
 %\listadesimbolos
 \sumario
 %--------------------------------------------------------
@@ -115,13 +115,13 @@ A computação paralela surgiu como um campo de estudo utilizado apenas em computa
 dada a grande demanda por poder computacional desta área \cite{Coulouris2011}. Hoje porém 
 computação paralela está sendo utilizada em novos cenários, o que tem motivado o crescente 
 estudo de algoritmos paralelos. Um desses cenários é o de \textit{internet of things(IoT)}, 
-onde diversos dispositivos inteligentes se comunicam\cite{Busemann2012}. Outro cenário é o
+onde diversos dispositivos inteligentes se comunicam \cite{Busemann2012}. Outro cenário é o
 de processadores multi-core que se tornaram populares desde que foi atingida a barreira de 
 potência em processadores \textit{single-core}, que fez com que não seja mais possível 
 aumentar a potência de um processador individualmente \cite{patterson2012computer}.
 
 Dentre os algoritmos paralelos desenvolvidos e estudados encontram-se algoritmos para a solução 
-do problema de \textit{satisfazibilidade booleana} (SAT). O problema SAT\cite{Biere} 
+do problema de \textit{satisfazibilidade booleana} (SAT). O problema SAT \cite{Biere} 
 consiste em determinar, para uma dada fórmula booleana, se existe uma atribuição de valores 
 para as variáveis para a qual a fórmula é satisfeita. SAT é um problema NP-Completo, logo sua 
 resolução por si só é um dos maiores problemas da computação. Porém o SAT tem aplicações diretas 
@@ -190,16 +190,26 @@ funcionem de forma eficiente nesses processadores.
 
 \section{Apresentação do Trabalho}
 
-Este trabalho é divido em outros cinco capítulos, conforme segue.
+Este trabalho é divido em outros seis capítulos, conforme segue.
 
 No capítulo dois é a fundamentação teórica do trabalha, neste capítulo são apresentados os 
 conceitos necessários para a compreensão do trabalho desenvolvido, este capítulo apresenta 
-inicialmente o problema SAT, seguindo apresenta a área de computação paralela e por fim 
-a interseção entre o problema SAT e computação paralela.
+uma introdução a lógica proposicional, a definisação problema SAT, os diversos algoritmos 
+\textit{SAT solver} e por fim o algoritmo base utilizado no trabalho.
 
-No capítulo três apresenta o desenvolvimento do trabalho, neste capítulo é apresentado o 
+No capítulo três é apresentada um introdução a computação paralela, em seguida é apresenta a 
+interseção entre o problema SAT e computação paralela e por são apresentadas as diversas técnicas 
+de paralelização do problema SAT.
+
+No capítulo quatro apresenta o desenvolvimento do trabalho, neste capítulo é apresentado o 
 algoritmo paralelo desenvolvido, um exemplo de funcionamento do sistema desenvolvido e como 
 as decisões de projeto foram tomadas.
+
+No capítulo cinco é apresentado o ambiente de testes e os resultados obtido com relação a tempo, 
+escalabilidade e eficiência.
+
+No capítulo seis é apresentada uma conclusão e os trabalhos futuros.
+
 
 \chapter{Fundamentação Teórica}
 \label{chap:fund}
@@ -223,14 +233,14 @@ problema SAT.
 
 É o campo da lógica que lida com o estudo  de proposições. Esta área é de vital importância 
 para a lógica e para a ciência da computação, tendo sido estudada por um longo período por 
-diversos lógicos, porém estudo moderno da área começa com o livro \textit{Logic of Relatives(1883)} 
+diversos lógicos, porém estudo moderno da área começa com o livro \textit{Logic of Relatives (1883)} 
 de Charles Peirce, nos anos 1890 Gottlob Frege começa a estudar e desenvolver o conceito de sentenças,
-sendo o termo função proposicional cunhado por Bertrand Russell em \textit{Principles of Mathematics(1903)}. 
+sendo o termo função proposicional cunhado por Bertrand Russell em \textit{Principles of Mathematics (1903)}. 
 Estes estudos têm sido amplamente aplicados em diversas áreas de ciência da computação como 
 gramaticas formais, teoria da computação, algoritmos entre outros.
 
 Uma proposição, que consiste de conjunto de variáveis ou literais, que possuem valores
-verdade, sendo os valores verdade ou falso, e pode ser formada de outras proposições com o uso de 
+verdade, sendo os valores Verdade ou Falso, e pode ser formada de outras proposições com o uso de 
 conectores lógicos, a um proposição pode ser atribuído um sentido, chamado de asserção. Conectores 
 lógicos compões proposições através da ligação de variáveis e literais, 
 para este trabalho notam-se os conectores \textit{AND} representado por $\wedge$, \textit{OR} 
@@ -265,8 +275,8 @@ F                  & F                  & F           & F           & V        \
 
 Fórmulas proposicionais podem ser representadas de diversas formas, porém 
 toda fórmula proposicional pode ser representa nas duas formas 
-canônicas, a forma normal conjuntiva (CNF, sigla em inglês) e a 
-forma normal disjuntiva (DNF, sigla em inglês).
+canônicas, a \textit{forma normal conjuntiva} (CNF, sigla em inglês) e a 
+\textit{forma normal disjuntiva} (DNF, sigla em inglês).
 
 As fórmulas proposicionais em CNF são representadas como uma 
 conjunção de cláusulas, sendo cada cláusula uma disjunção de literais, 
@@ -374,8 +384,8 @@ temporal.
 
 Os \textit{SAT solvers} podem ser divididos em classes, sendo que as 
 duas principais classes de algoritmos \textit{SAT solvers} sequenciais 
-são os baseados em conflito de cláusulas(CDCL, sigla em inglês), a 
-versão mais moderna do DPLL(Davis-Putnam-Logemann-Loveland) \cite{Davis1962}, e os 
+são os baseados em conflito de cláusulas (CDCL, sigla em inglês), a 
+versão mais moderna do DPLL (Davis-Putnam-Logemann-Loveland) \cite{Davis1962}, e os 
 baseados em busca local estocástica \cite{Selman95}. O algoritmo \textit{SAT solver} 
 desenvolvido neste trabalho é baseado na conversão CNF-DNF. 
 Não exitem muitos outros \textit{solver} baseados nesse método, 
@@ -396,14 +406,14 @@ CDCL é mostrado na Figura \ref{fig:CDCL}.
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.6\textwidth]{figuras/DPLL.jpg}
-    \caption{Arvore de decisão do DPLL\cite{Katajainen}}
+    \caption{Arvore de decisão do DPLLi \cite{Katajainen}}
     \label{fig:DPLL}
 \end{figure}
 
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.6\textwidth]{figuras/CDCL.jpg}
-    \caption{Diagrama que apresenta os procedimentos e componentes do CDCL\cite{Davis1962}}
+    \caption{Diagrama que apresenta os procedimentos e componentes do CDCL \cite{Davis1962}}
     \label{fig:CDCL}
 \end{figure}
 
@@ -465,10 +475,10 @@ possível encontrar uma solução.
 \caption{Pseudocódigo de um algoritmo de busca local} \label{alg:local}
 \begin{algorithmic}[1]
 \Procedure{buscaLocal}{$\Phi$}
-\For{i := 1 to nTentativas}
+\For{i := 1 a nTentativas}
     \State{$\Phi \gets$ valoresVerdadeAleatórios($\Phi$)} \Comment{atribui valores verdade
     aleatórios aos literais}
-    \For{i := 1 to nMudanças}
+    \For{i := 1 a nMudanças}
         \If{$\Phi$ é satisfeito}
             \State \textbf{return} $\Phi$
         \EndIf
@@ -507,9 +517,9 @@ ao processo de conversão.
 
 % Utilizar trabalhos da jerusa e outros
 
-Será utilizado como base o algoritmo \textit{SAT solver} QuantumSAT\allowbreak \cite{bittencourt2003syntactic}. 
-Este é um algoritmo \textit{SAT solver} completo, cuja técnica para 
-a solução baseia-se em converter uma fórmula proposicional 
+Será utilizado como base o algoritmo \textit{SAT solver} QuantumSAT\allowbreak 
+ \cite{bittencourt2003syntactic}. Este é um algoritmo \textit{SAT solver} completo, 
+ cuja técnica para a solução baseia-se em converter uma fórmula proposicional 
 escrita em CNF para DNF. 
 
 A ideia para se calcular a teoria em DNF consiste em encontrar os 
@@ -558,11 +568,11 @@ compõem. Como pode ser visto no algoritmo \ref{alg:mquanta}.
 \caption{Algoritmo de montagem dos quanta} \label{alg:mquanta}
 \begin{algorithmic}[1]
 \Procedure{quantumMaker}{$\Phi$}\Comment{Recebe uma fórmula no formato CNF}
-\For{$each\ \phi\ in\ \Phi$}
+\For{$cada\ \phi\ em\ \Phi$}
 	\State$F(\phi) \gets$ \O \Comment{Inicializa a lista de quanta}
 \EndFor
-\For{$each\ C\ in\ \Phi$}
-    \For{$each\ \phi\ in\ C$}
+\For{$cada\ C\ em\ \Phi$}
+    \For{$cada\ \phi\ em\ C$}
         \State $F(\phi) \gets C$
     \EndFor
 \EndFor
@@ -575,7 +585,7 @@ Com a lista quanta de $\Phi$ montada, encontrar a representação CNF de
 $\Phi$ é uma busca em um espaço de estados, em que cada estado 
 corresponde a um caminho para uma possível cláusula dual mínima.
 
-Para realizar esta busca é utilizado um algoritmo do tipo A*\cite{Russell2003}, este 
+Para realizar esta busca é utilizado um algoritmo do tipo A* \cite{Russell2003}, este 
 precisa de três funções básicas, uma para definir os estados iniciais, 
 uma para definir o estado vizinho de um estado e uma para saber qual estado 
 é final.
@@ -665,13 +675,14 @@ problema SAT em paralelo.
 A computação paralela é a área da computação que estuda os processos 
 que são executados simultaneamente. A computação paralela pode ser divida 
 em diversas subáreas, uma vez que existem diversas formas de se executar 
-processos em paralelo, indo desde o paralelismo em nível de instrução \cite{Rau2003} 
-até \textit{clusters} de diversos computadores independentes \cite{Coulouris2011}.
+processos em paralelo, como por exemplo o paralelismo em nível de instrução \cite{Rau2003}, 
+processadores multi-core, máquinas distribuídas, clusters de computadores \cite{Coulouris2011} e 
+clouds elásticas.
 
-Do ponto de vista da arquitetura de computação paralela existem diversas classificações. 
-Uma delas é a taxonomia de Flynn \cite{Flynn1972}, apresentada na Tabela \ref{tab:flynn}, 
-que divide as arquiteturas paralelas em relação aos seus dados e processos, hoje grande parte 
-dos sistemas são MIMD. 
+Como modelo podemos analizar a área do ponto de vista da arquitetura de computação paralela, existem 
+diversas classificações. Uma delas é a taxonomia de Flynn \cite{Flynn1972}, apresentada na 
+Tabela \ref{tab:flynn}, que divide as arquiteturas paralelas em relação aos seus dados e processos, hoje 
+grande parte dos sistemas são MIMD. 
 
 \begin{table}[H]
 \begin{center}
@@ -689,24 +700,25 @@ Outra forma de se pensar em arquiteturas paralelas é com relação a memória, send
 uma divisão clássica, dividindo-se as arquiteturas entre sistemas que utilizam memória 
 compartilhada e sistemas que utilizam memória distribuída \cite{patterson2012computer}.
 
-Existem diferentes tipos de paralelismo: no paralelismo em nível de instruções, 
+Também podemos analizar do ponto de vista do tipo de paralelismo: no paralelismo em nível de instruções, 
 um processador executa as instruções do programa através de um \textit{pipeline} \cite{patterson2012computer}.
 No paralelismo em nível de dados, uma dada tarefa pode ser executada em paralelo 
 dividindo-se os dados a serem processados em um nó diferente \cite{Hillis1986}. E em nível de tarefa, 
 as diferentes partes de uma tarefa são distribuídas entre diferentes nós \cite{Quinn2003}.
 
-Existem diversos paradigmas de programação paralela \cite{Kumar2002}. Um deles é o mestre/escravo, no qual 
-a um nó é atribuída a tarefa de mestre e este envia tarefas a serem realizadas pelos nós 
-escravos. Outra é a programa único múltiplos dados, no qual o espaço de dados é dividido 
-entre múltiplos nós e estes executam a mesma tarefa com a sua parte de dados. Outro paradigma 
+Além disso outro aspecto importante são os diversos paradigmas de programação paralela \cite{Kumar2002}. 
+Um deles é o mestre/escravo, no qual a um nó é atribuída a tarefa de mestre e este envia tarefas a serem 
+realizadas pelos nós escravos. Outra é a programa único múltiplos dados, no qual o espaço de dados é 
+dividido entre múltiplos nós e estes executam a mesma tarefa com a sua parte de dados. Outro paradigma 
 parecido com este é o de \textit{pipeline} de dados, em que o processamento dos dados é dividido 
 em etapas e cada etapa é realizada em um nó diferente. Um paradigma importante é o dividir e 
 conquistar, que consiste em recursivamente dividir a tarefa entre os nós.
 
 Neste trabalho, tem-se como foco a subárea denominada computação distribuída, pois 
 o trabalho trata de um algoritmo que funciona através da troca de mensagens e sem memória 
-compartilhada \cite{Coulouris2011}. Sendo assim o algoritmo desenvolvido pode 
-funcionar tanto em um \textit{cluster} de computadores quanto em um processador \textit{multi-core}.
+compartilhada \cite{Coulouris2011}. Também foi utilizado o paradigma de mestre/escravo. Sendo assim o 
+algoritmo desenvolvido pode funcionar tanto em um \textit{cluster} de computadores quanto em um 
+processador \textit{multi-core}.
 
 O \textit{Track} de computação paralela da SAT \textit{Competition} é 
 feito em um processador de 12 núcleos com 36 GB de memória RAM.
@@ -734,7 +746,7 @@ na Figura \ref{fig:port}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{figuras/portfolio.jpg}
-    \caption{Funcionamento de um algoritmo portfólio\cite{nelson2013new}}
+    \caption{Funcionamento de um algoritmo portfólio \cite{nelson2013new}}
     \label{fig:port}
 \end{figure}
 
@@ -865,8 +877,8 @@ Como dito anteriormente o algoritmo base realiza uma busca em um espaço de estad
 estados possíveis do espaço para que o problema seja provado insatisfazível ou para que sejam encontradas 
 todas as soluções.
 
-Existem dois modos de realizar uma busca em um espaço de estados, em largura(BFS, sigla em inglês) ou em 
-profundidade(DFS, sigla em inglês). A busca em largura funciona partindo de uma raiz e visitando todos 
+Existem dois modos de realizar uma busca em um espaço de estados, em largura (BFS, sigla em inglês) ou em 
+profundidade (DFS, sigla em inglês). A busca em largura funciona partindo de uma raiz e visitando todos 
 os seus vértices. A busca em profundidade funciona partindo de uma raiz e explorando cada ramo do espaço 
 até que seja encontrado um nó folha, quando este é encontrado é realizado o \textit{backtracking}.
 
@@ -1046,12 +1058,12 @@ $P_1^{\{3,4,8,9\}}, \neg P_1^{\{1,2,5,6,7,10\}}, P_2^{\{1,3,4,5,6\}}, \neg P_2^{
 $P_3^{\{2,3,4,5,9,10\}}, \neg P_3^{\{1,6,7,8\}}, $
 $P_4^{\{1,2,4,5,7,8\}}, \neg P_4^{\{3,6,9,10\}} $
 
-A imagem a seguir descreve o funcionamento do algoritmo na situação citada anteriormente. A nó 
-a@comp é o nó que realiza controle do sistema, ele responsável por manter os estados que ainda 
-necessitam ser expandidos, as soluções dos que já foram expandidos e a ordem correta da comunicação, 
-fisicamente este nó pode mudar de localização em caso de falha, esta tarefa cabe aos supervisors. 
-Os nós 1@comp e 2@comp são os trabalhadores eles recebem um estado a ser expandido, realiza sua expansão 
-e retorna o resultado para o nó a@comp.
+Esse funcionamento é descritp na Figura \ref{fig:nodesdy} do algoritmo, na situação citada anteriormente. 
+O nó a@comp é o nó que realiza controle do sistema, ele é o pqsat,ele responsável por manter os estados 
+que ainda necessitam ser expandidos, as soluções dos que já foram expandidos e a ordem correta da 
+comunicação, fisicamente este nó pode mudar de localização em caso de falha, esta tarefa cabe aos 
+supervisors. Os nós 1@comp e 2@comp são os trabalhadores, sendo ambos nós serach\_tool, eles recebem um 
+estado a ser expandido, realiza sua expansão e retorna o resultado para o nó a@comp.
 
 Neste caso o nó 1@comp pegará o estado com o omega: [-1] e o expandirá, assim retornando a 
 solução {omega:[-1,4,2,3], omega ...}, o nó 2@comp pegará o estado com o omega: [4] e retornará a solução 
@@ -1119,7 +1131,7 @@ Ambas as máquinas rodaram os testes sendo acessadas por SSH e rodando a versão m
 operacional, assim reduzindo o impacto da execução do sistema nos testes.
 
 Para facilitar, padronizar e ter uma execução mais rápida dos testes foram utilizados os testes disponíveis 
-na SATLIB(http://www.cs.ubc.ca/~hoos/SATLIB/benchm.html), utilizando os testes 3-SAT randômicos uniformes 
+na SATLIB (http://www.cs.ubc.ca/~hoos/SATLIB/benchm.html), utilizando os testes 3-SAT randômicos uniformes 
 indo de 20 variáveis a 250 variáveis e indo de 91 clausulas a 1065 clausulas, sendo que utilizei a 
 média de 100 instancias, sendo cada instancia um problema diferente porém de mesma classe. Também foram 
 utilizados alguns testes da SAT competition para um maior volume de variáveis e cláusulas, porém como foram 
@@ -1149,10 +1161,25 @@ também se deve aos fatores apresentados anteriormente. Apesar disso para uma pri
 os resultados são bastante satisfatórios. Os resultados são apresentados na tabela e no gráfico 
 abaixo, onde os dados estão apresentados em segundos.
 
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=0.8\textwidth]{figuras/results_compare.png}
+%    \caption{Comparação com o glucose(multi-core)}
+%    \label{fig:port}
+%\end{figure}
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{figuras/results_compare.png}
-    \caption{Comparação com o glucose(multi-core)}
+    \includegraphics[width=0.8\textwidth]{figuras/results_glucose.png}
+    \caption{Comparação com o Glucose(multi-core)}
+    \label{fig:port}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/results_pqsat.png}
+    \caption{Comparação com o ParaQuantumSAT(multi-core)}
     \label{fig:port}
 \end{figure}
 
@@ -1188,6 +1215,13 @@ uf225    & 0.352    & 0.302    & 0.271    & 0.212    \\ \hline
 uf250    & 0.428    & 0.396    & 0.318    & 0.278    \\ \hline
 \end{tabular}
 \end{table}
+
+Estes resultados são obidos rodando 100 instancias de cada classe do problema, sendo classe o números 
+de variáveis, indo de 20 a 250, e tirando a média dos tempos de execução. Também foi calculado o desvio 
+padrão para os testes de 150 a 250 variáveis, pois para os valores o desvio padrão ficou bastante pequeno. 
+Os desvios padrão paro o Glucose são 0.009 para uf150, 0.033 para uf175, 0.016 para uf200, 0.026 para uf225 
+e 0.057 para uf250. Os desvios padrão paro o ParaQuantumSAT são 0.012 para uf150, 0.021 para uf175, 0.037 
+para uf200, 0.042 para uf225 e 0.089 para uf250. Ambos os desvios padrão foram calculados com 1 thread.
 
 \section{Resultados e Análise de escalabilidade}
 
@@ -1285,7 +1319,7 @@ também foi o uso da linguagem Erlang, pouco utilizada nestes cenários porém bast
 pesquisar, pois apresenta um bom desempenho para a computação distribuída e pode ser utilizada em conjunto 
 com outras linguagens mais eficientes na parte de computação pesada.
 
-Neste trabalho foi possível compreender as diversas técnicas de computação, o problema SAT e as relações 
+Neste trabalho foi possível compreender as diversas técnicas de compu- tação, o problema SAT e as relações 
 entre ambas as áreas, sendo estudas as diversas técnicas para paralelização dos algoritmos para solução. 
 Com o estudo destas técnicas foi possível compreender qual delas funciona da melhor para paralelizar o 
 algoritmo base utilizado neste trabalho, com base neste estudo pode-se também compreender a qualidade 
@@ -1316,6 +1350,8 @@ Também é possível realizar alguns estudos de melhoria da implementação. Podem-se
 diversas estruturas de dados utilizadas, de forma a encontrar estruturas mais eficientes. Outro 
 fator possível é adicionar alguns elementos dinâmicos ao algoritmo, sendo um elemento importante 
 quanto nós são gerados na \textit{state pool}, de forma a melhor utilizar os nós do sistema.
+
+\abreviatura{ABNT}{Associação Brasileira de Normas Técnicas}
 
 \bibliographystyle{ufscThesis/ufsc-alf}
 \bibliography{bibliografia}

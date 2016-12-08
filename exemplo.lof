@@ -1,10 +1,11 @@
 \select@language {brazil}
-\contentsline {figure}{\numberline {1}{\ignorespaces Arvore de decis\~ao do DPLL\cite {Katajainen}}}{27}
-\contentsline {figure}{\numberline {2}{\ignorespaces Diagrama que apresenta os procedimentos e componentes do CDCL\cite {Davis1962}}}{28}
-\contentsline {figure}{\numberline {3}{\ignorespaces Funcionamento de um algoritmo portf\'olio\cite {nelson2013new}}}{35}
-\contentsline {figure}{\numberline {4}{\ignorespaces Arquitetura do PMSat \cite {Gil_pmsat}}}{37}
-\contentsline {figure}{\numberline {5}{\ignorespaces Din\^amica dos n\'os}}{41}
-\contentsline {figure}{\numberline {6}{\ignorespaces Estados iniciais}}{45}
-\contentsline {figure}{\numberline {7}{\ignorespaces Compara\c c\~ao com o glucose(multi-core)}}{49}
-\contentsline {figure}{\numberline {8}{\ignorespaces Teste de escalabilidade(cloud)}}{50}
-\contentsline {figure}{\numberline {9}{\ignorespaces Teste de escalabilidade}}{52}
+\contentsline {figure}{\numberline {1}{\ignorespaces Arvore de decis\~ao do DPLLi \cite {Katajainen}}}{29}
+\contentsline {figure}{\numberline {2}{\ignorespaces Diagrama que apresenta os procedimentos e componentes do CDCL \cite {Davis1962}}}{30}
+\contentsline {figure}{\numberline {3}{\ignorespaces Funcionamento de um algoritmo portf\'olio \cite {nelson2013new}}}{37}
+\contentsline {figure}{\numberline {4}{\ignorespaces Arquitetura do PMSat \cite {Gil_pmsat}}}{39}
+\contentsline {figure}{\numberline {5}{\ignorespaces Din\^amica dos n\'os}}{43}
+\contentsline {figure}{\numberline {6}{\ignorespaces Estados iniciais}}{47}
+\contentsline {figure}{\numberline {7}{\ignorespaces Compara\c c\~ao com o Glucose(multi-core)}}{51}
+\contentsline {figure}{\numberline {8}{\ignorespaces Compara\c c\~ao com o ParaQuantumSAT(multi-core)}}{51}
+\contentsline {figure}{\numberline {9}{\ignorespaces Teste de escalabilidade(cloud)}}{53}
+\contentsline {figure}{\numberline {10}{\ignorespaces Teste de escalabilidade}}{55}
