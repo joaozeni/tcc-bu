@@ -27,9 +27,9 @@
 \contentsline {chapter}{\numberline {5}\MakeUppercase {Ambiente de Testes e Resultados Experimentais}}{49}
 \contentsline {section}{\numberline {5.1}Ambientes de Teste}{49}
 \contentsline {section}{\numberline {5.2}Resultados e An\'alise de tempo}{50}
-\contentsline {section}{\numberline {5.3}Resultados e An\'alise de escalabilidade}{53}
-\contentsline {section}{\numberline {5.4}Resultados e An\'alise de efici\^encia}{54}
-\contentsline {section}{\numberline {5.5}Considera\c c\~oes Sobre o Cap\IeC {\'\i }tulo}{55}
+\contentsline {section}{\numberline {5.3}Resultados e An\'alise de escalabilidade}{52}
+\contentsline {section}{\numberline {5.4}Resultados e An\'alise de efici\^encia}{55}
+\contentsline {section}{\numberline {5.5}Considera\c c\~oes Sobre o Cap\IeC {\'\i }tulo}{56}
 \contentsline {chapter}{\numberline {6}\MakeUppercase {Trabalhos Futuros e Conclus\~ao}}{57}
 \contentsline {section}{\numberline {6.1}Conclus\~ao}{57}
 \contentsline {section}{\numberline {6.2}Trabalhos Futuros}{57}

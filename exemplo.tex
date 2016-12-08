@@ -22,6 +22,8 @@
 \newcommand{\afazer}[1]{{\color{red}{#1}}} % Para destacar uma parte a ser trabalhada
 \renewcommand{\ABNTbibliographyname}{REFERÊNCIAS} % Necessário para abnTeX 0.8.2
 
+%\hyphenation{ca-nô-ni-cas}
+
 %----------------------------------------------------------------------
 % Identificadores do trabalho
 % Usados para preencher os elementos pré-textuais
@@ -66,7 +68,7 @@ apoio no desenvolvimento deste trabalho e os valiosos conselhos para o trabalho.
 \epigrafe{Texto da Epígrafe. Citação relativa ao tema do trabalho. É opcional. A epígrafe pode também aparecer na abertura de cada seção ou capítulo.}
 {(Autor da epígrafe, ano)}
 
-\textoResumo {Q problema SAT é um problema clássico e bem conhecido, sendo o primeiro provado ser NP-completo
+\textoResumo {O problema SAT é um problema clássico e bem conhecido, sendo o primeiro provado ser NP-completo
 . Por sua importância, já que diversos problemas igualmente NP-completo podem ser solucionados via 
 redução ao problema SAT, o estudo de técnicas e algoritmos para a sua solução é sempre um tema atual de 
 pesquisa. Uma forma de buscar acelerar a obtenção da solução é através de paralelismo. Computação paralela 
@@ -193,7 +195,7 @@ funcionem de forma eficiente nesses processadores.
 Este trabalho é divido em outros seis capítulos, conforme segue.
 
 No capítulo dois é a fundamentação teórica do trabalha, neste capítulo são apresentados os 
-conceitos necessários para a compreensão do trabalho desenvolvido, este capítulo apresenta 
+conceitos necessários para a comprensão do trabalho desenvolvido, este capítulo apresenta 
 uma introdução a lógica proposicional, a definisação problema SAT, os diversos algoritmos 
 \textit{SAT solver} e por fim o algoritmo base utilizado no trabalho.
 
@@ -214,18 +216,18 @@ No capítulo seis é apresentada uma conclusão e os trabalhos futuros.
 \chapter{Fundamentação Teórica}
 \label{chap:fund}
 
-Neste capítulo são descritos os fundamentos necessários para a compreensão do trabalho 
+Neste capítulo são descritos os fundamentos necessários para a comprensão do trabalho 
 desenvolvido. Inicialmente são apresentados os conceitos de lógica proposicional 
 necessários para a compressão do problema SAT. Utilizando os conceitos apresentados 
 o problema SAT é formalmente definido. A seguir é apresentada a importância do problema 
 SAT. Na seção seguinte são apresentados os diversos SAT \textit{solvers} sequenciais. 
-Por ultimo é apresentado o algoritmo base utilizado neste trabalho.
+Por último é apresentado o algoritmo base utilizado neste trabalho.
 
 \section{O Problema SAT}
 \label{sec:sat}
 
 O problema SAT consiste em saber se há alguma atribuição de valores verdade que satisfaz uma 
-fórmula lógica proposicional descrita em CNF. Iniciamos este capitulo apresentando um pouco 
+fórmula lógica proposicional descrita em CNF. Iniciamos este capítulo apresentando um pouco 
 sobre a linguagem lógica proposicional, formas normais canônicas e finalmente sobre o 
 problema SAT.
 
@@ -275,7 +277,7 @@ F                  & F                  & F           & F           & V        \
 
 Fórmulas proposicionais podem ser representadas de diversas formas, porém 
 toda fórmula proposicional pode ser representa nas duas formas 
-canônicas, a \textit{forma normal conjuntiva} (CNF, sigla em inglês) e a 
+canôni\- cas, a \textit{forma normal conjuntiva} (CNF, sigla em inglês) e a 
 \textit{forma normal disjuntiva} (DNF, sigla em inglês).
 
 As fórmulas proposicionais em CNF são representadas como uma 
@@ -397,7 +399,7 @@ valor verdade a uma literal, simplificar a fórmula e, recursivamente,
 verificar se a fórmula simplificada é satisfazível. No caso do DPLL a ideia 
 básica é recursivamente montar uma árvore de decisão, como a apresentada na 
 Figura \ref{fig:DPLL}, além disto são utilizadas diversas heurísticas para melhor eficiência do algoritmo, 
-destacam-se aqui as heurísticas para a escolha do literal a se atribuir o 
+destacam-se aqui as heurísti\- cas para a escolha do literal a se atribuir o 
 valor verdade \cite{Ouyang1996}. No caso do CDCL, é montada uma estrutura adicional 
 que o permite ignorar alguns passos, para em teorias geradas aleatoriamente 
 baixar o tempo médio de execução \cite{Silva1997}. O funcionamento básico do 
@@ -454,7 +456,7 @@ Já os algoritmos baseados em busca local estocástica consistem em atribuir
 valores verdade a literais de forma iterativa e ir, constantemente, 
 melhorando a solução até que a fórmula seja satisfazível \cite{Selman95}. Estes são 
 algoritmos gulosos, pois utilizam os literais que eliminam o maior 
-número de cláusulas. Possuem diversas formas de otimização, 
+número de cláusulas. Possuem diversas formas de otimiza\- ção, 
 por exemplo: aumentar a quantidade de literais a atribuir valor verdade 
 em cada passo, implementar métodos para melhorar a qualidade da seleção de literais 
 de forma iterativa, entre outras. A principal falha deste método 
@@ -517,10 +519,9 @@ ao processo de conversão.
 
 % Utilizar trabalhos da jerusa e outros
 
-Será utilizado como base o algoritmo \textit{SAT solver} QuantumSAT\allowbreak 
- \cite{bittencourt2003syntactic}. Este é um algoritmo \textit{SAT solver} completo, 
- cuja técnica para a solução baseia-se em converter uma fórmula proposicional 
-escrita em CNF para DNF. 
+Será utilizado como base o algoritmo \textit{SAT solver} chamado QuantumSAT\allowbreak  \cite{bittencourt2003syntactic}. 
+Este é um algoritmo \textit{SAT solver} completo,  cuja técnica para a solução baseia-se em converter 
+uma fórmula proposicional escrita em CNF para DNF. 
 
 A ideia para se calcular a teoria em DNF consiste em encontrar os 
 símbolos a se atribuir Verdade para que cada cláusula possua pelo 
@@ -727,7 +728,7 @@ feito em um processador de 12 núcleos com 36 GB de memória RAM.
 \section{Paralelismo no problema SAT}
 
 Nesta seção serão apresentadas as diversas técnicas para resolver o problema SAT de 
-forma paralela. Primeiramente é apresenta a técnica portfólio, que consiste em utilizar 
+forma paralela. Primeiramente é apresenta a técnica portfó\- lio, que consiste em utilizar 
 múltiplos \textit{SAT solver} em paralelo. A seguir é apresentado o particionamento do 
 espaço de busca, que consiste em realizar a busca de soluções em paralelo. Por fim é 
 apresentado a técnica de particionamento do problema, que consiste em dividir a cláusulas 
@@ -776,8 +777,8 @@ Este \textit{solver} foi desenvolvido pela Microsoft e pelo CRIL-CNRS.
 
 Esta técnica consiste em dividir o espaço de busca do problema a ser explorado em espaços de 
 busca menores a serem processados nos vários nós do sistema. A divisão da busca pode ser feita 
-de diversa maneiras, sendo aplicada tanto em sistemas multi-core quanto sistemas conectados 
-através de uma rede. Esta técnica também é bastante popular, sendo bastante utilizada na paralelização 
+de diversa maneiras, sendo aplicada tanto em sistemas multi-core quanto sistemas distribuídos 
+. Esta técnica também é bastante popular, sendo bastante utilizada na paralelização 
 de algoritmos baseado tanto em DPLL quanto em CDCL. As diferentes formas de implementação desta 
 técnica são apresentadas a seguir. Este trabalho também utiliza esta técnica, na seção de desenvolvimento 
 serão apresentados detalhes de como esta técnica foi utilizada no algoritmo QuantumSAT.
@@ -789,7 +790,7 @@ otimizações para a melhor execução em paralelo deste algoritmo, destaca-se a esc
 da forma como serão distribuídas as fórmulas simplificadas.
 
 Existem diversas implementações do DPLL em paralelo. A primeira delas foi o PSatz \cite{Jurkowiak2005}, esta 
-foi uma implementação simples da técnica que não utilizava nenhuma otimização além 
+foi uma implemen\- tação simples da técnica que não utilizava nenhuma otimização além 
 das apresentadas no DPLL clássico, descrito no algoritmo \ref{alg:DPLL}. Esta implementação 
 foi feita originalmente utilizando processadores \textit{single core} conectados em rede 
 e posteriormente foi portada para processadores \textit{multi core} com memória 
@@ -935,7 +936,7 @@ sucessores e recursivamente chama a função até que a pilha esteja vazia. Esta im
 
 Na versão implementada neste trabalho o estado é composto por um $\Omega$ incompleto, que é a lista 
 de quantum associados ao estado, um forbidden, que é a lista dos quanta que não podem mais ser associados 
-ao estado, e o gap, que é o conjunto de clausulas que não contém um literal no $\Omega$.
+ao estado, e o gap, que é o conjunto de cláusulas que não contém um literal no $\Omega$.
 
 Outra característica da implementação deste trabalho é o cálculo dos sucessores, que é feito utilizando 
 uma função de qualidade, a mesma do algoritmo sequencial apresentado na seção \ref{sec:algbase}. 
@@ -970,7 +971,7 @@ Para o caso desta implementação desejamos apenas encontrar uma solução qualquer,
 neste caso a forma da busca pode ter algum impacto. Para verificar isto decidiu-se utilizar um método 
 empírico, pois as duas implementações são facilmente realizadas e alguns testes rápidos mostraram 
 evidencias suficientes para que uma boa decisão fosse tomada. Realizaram-se os testes utilizando algumas 
-instâncias do problema SAT aleatórias pequenas.
+instâncias do problema SAT aleató\- rias pequenas.
 
 A busca em largura apresentou algumas vantagens no balanceamento de carga, uma vez que foi possível 
 cada nó do sistema realizar uma porção menor do trabalho, porém essa característica apresenta uma 
@@ -1170,16 +1171,16 @@ abaixo, onde os dados estão apresentados em segundos.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{figuras/results_glucose.png}
-    \caption{Comparação com o Glucose(multi-core)}
+    \includegraphics[width=0.8\textwidth]{figuras/results_12.png}
+    \caption{Comparação com o ParaQuantumSAT e Glucose 1 e 2 threads(multi-core)}
     \label{fig:port}
 \end{figure}
 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{figuras/results_pqsat.png}
-    \caption{Comparação com o ParaQuantumSAT(multi-core)}
+    \includegraphics[width=0.8\textwidth]{figuras/results_48.png}
+    \caption{Comparação com o ParaQuantumSAT e Glucose 4 e 8 threads(multi-core)}
     \label{fig:port}
 \end{figure}
 
@@ -1221,7 +1222,8 @@ de variáveis, indo de 20 a 250, e tirando a média dos tempos de execução. Também
 padrão para os testes de 150 a 250 variáveis, pois para os valores o desvio padrão ficou bastante pequeno. 
 Os desvios padrão paro o Glucose são 0.009 para uf150, 0.033 para uf175, 0.016 para uf200, 0.026 para uf225 
 e 0.057 para uf250. Os desvios padrão paro o ParaQuantumSAT são 0.012 para uf150, 0.021 para uf175, 0.037 
-para uf200, 0.042 para uf225 e 0.089 para uf250. Ambos os desvios padrão foram calculados com 1 thread.
+para uf200, 0.042 para uf225 e 0.089 para uf250. Ambos os desvios padrão foram calculados com 1 thread, 
+os desvios padrão para mais threads ficaram proporcionais.
 
 \section{Resultados e Análise de escalabilidade}
 
@@ -1346,7 +1348,7 @@ de sucessores na arvore, isso em si melhoraria o desempenho do algoritmo, porém 
 se trata do cenário paralelo o ganho poderia ser ainda maior, pois neste cenário é 
 possível utilizar múltiplas heurísticas ao mesmo tempo.
 
-Também é possível realizar alguns estudos de melhoria da implementação. Podem-se estudar as 
+Também é possível realizar alguns estudos de melhoria da implemen\- tação. Podem-se estudar as 
 diversas estruturas de dados utilizadas, de forma a encontrar estruturas mais eficientes. Outro 
 fator possível é adicionar alguns elementos dinâmicos ao algoritmo, sendo um elemento importante 
 quanto nós são gerados na \textit{state pool}, de forma a melhor utilizar os nós do sistema.

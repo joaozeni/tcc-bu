@@ -5,7 +5,7 @@
 \contentsline {figure}{\numberline {4}{\ignorespaces Arquitetura do PMSat \cite {Gil_pmsat}}}{39}
 \contentsline {figure}{\numberline {5}{\ignorespaces Din\^amica dos n\'os}}{43}
 \contentsline {figure}{\numberline {6}{\ignorespaces Estados iniciais}}{47}
-\contentsline {figure}{\numberline {7}{\ignorespaces Compara\c c\~ao com o Glucose(multi-core)}}{51}
-\contentsline {figure}{\numberline {8}{\ignorespaces Compara\c c\~ao com o ParaQuantumSAT(multi-core)}}{51}
-\contentsline {figure}{\numberline {9}{\ignorespaces Teste de escalabilidade(cloud)}}{53}
+\contentsline {figure}{\numberline {7}{\ignorespaces Compara\c c\~ao com o ParaQuantumSAT e Glucose 1 e 2 threads(multi-core)}}{51}
+\contentsline {figure}{\numberline {8}{\ignorespaces Compara\c c\~ao com o ParaQuantumSAT e Glucose 4 e 8 threads(multi-core)}}{52}
+\contentsline {figure}{\numberline {9}{\ignorespaces Teste de escalabilidade(cloud)}}{54}
 \contentsline {figure}{\numberline {10}{\ignorespaces Teste de escalabilidade}}{55}
